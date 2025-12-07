@@ -32,7 +32,7 @@ export class TodoForm {
   protected readonly errorService: ValidatorErrMessageService = inject(ValidatorErrMessageService);
   protected readonly TOOLTIP_TEXT = TOOLTIP_TEXT;
   protected newTodoForm = this.formBuilder.group({
-    text: this.formBuilder.control<string>('', [
+    name: this.formBuilder.control<string>('', [
       Validators.required,
       trimmedMinLength(3),
       Validators.maxLength(45),

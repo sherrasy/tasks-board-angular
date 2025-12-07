@@ -23,7 +23,7 @@
     appShowTooltip
     [tooltipText]="TOOLTIP_TEXT.LIST_ITEM | transloco"
     (dblclick)="handleOpenEditing($event)"
-    >{{ currentTodo().text }}</span
+    >{{ currentTodo().name }}</span
   >
   <app-button
     type="delete"
@@ -40,14 +40,14 @@
     <mat-form-field class="form-input-wrapper" subscriptSizing="dynamic">
       <input
         #editInput
-        type="text"
+        type="name"
         matInput
         [placeholder]="'todoItem.editPlaceholder' | transloco"
-        formControlName="text"
+        formControlName="name"
         (keydown)="handleKeydownPress($event)"
       />
-      @if (errorService.showErrorMessage(editTodoForm.controls.text)) {
-      <mat-error>{{ errorService.getErrorMessage(editTodoForm.controls.text, 'Title') }}</mat-error>
+      @if (errorService.showErrorMessage(editTodoForm.controls.name)) {
+      <mat-error>{{ errorService.getErrorMessage(editTodoForm.controls.name, 'Title') }}</mat-error>
       }
     </mat-form-field>
 

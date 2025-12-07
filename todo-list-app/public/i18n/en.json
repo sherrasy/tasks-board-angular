@@ -4,7 +4,20 @@
     "taskList": "Todo list",
     "taskBoard": "Todo board",
     "emptyList": "There are no items. Type new task or change filter.",
-    "description": "Description"
+    "description": "Description",
+    "labels": "Labels",
+    "unassigned": "Unassigned"
+  },
+  "todo": {
+    "id": "ID",
+    "status": "Status",
+    "priority": "Priority",
+    "reporter": "Reporter",
+    "assignee": "Assignee",
+    "estimate": "Estimate",
+    "sprint": "Sprint",
+    "completedIn": "Completed Sprint",
+    "notFound": "Todo item not found."
   },
   "todoForm": {
     "title": "Add new todo",
@@ -16,7 +29,8 @@
     "title": "Status",
     "all": "All",
     "inProgress": "In progress",
-    "completed": "Completed"
+    "completed": "Completed",
+    "new": "New"
   },
   "todoItem": {
     "deleteButton": "Delete",
@@ -41,5 +55,14 @@
     "saveTodo": "Save todo",
     "removeTodo": "Remove todo",
     "saveTitle": "Save new title"
-  }
+  },
+  "New": "New",
+  "InProgress": "In Progress",
+  "Completed": "Completed",
+  "Low": "Low",
+  "Medium": "Medium",
+  "High": "High",
+  "bug": "Bug",
+  "feature": "Feature",
+  "refactor": "Refactor"
 }

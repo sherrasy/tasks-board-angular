@@ -37,6 +37,7 @@ export const TodosStore = signalStore(
   withComputed(({ todos, selectedItemId, editingItemId, filterValue }) => ({
     completedTodos: computed(() => todos().filter((todo) => todo.status === 'Completed')),
     incompleteTodos: computed(() => todos().filter((todo) => todo.status === 'InProgress')),
+    newTodos: computed(() => todos().filter((todo) => todo.status === 'New')),
     selectedTodo: computed(() => {
       const selectedId = selectedItemId();
       return selectedId ? todos().find((todo) => todo.id === selectedId) : null;
@@ -73,7 +74,7 @@ export const TodosStore = signalStore(
       addNewTodo: rxMethod<AddTodoDto>(
         pipe(
           switchMap((todoData) => {
-            if (!todoData.text?.trim() && !todoData.description?.trim()) return of(null);
+            if (!todoData.name?.trim() && !todoData.description?.trim()) return of(null);
             patchState(store, { isLoading: true });
             return todosApiService.addNewTodo(todoData).pipe(
               tap((newTodo) => {

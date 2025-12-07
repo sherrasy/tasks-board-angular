@@ -8,6 +8,18 @@
     } @else {
     <div class="todos-section">
       <div class="todos-column">
+        <h2>{{ 'filters.new' | transloco }}</h2>
+        <ul class="todos-list">
+          @for (todo of todosStore.newTodos(); track todo.id) {
+          <app-todo-list-item
+            [currentTodo]="todo"
+          ></app-todo-list-item>
+          } @empty {
+          <li>{{ 'common.emptyList' | transloco }}</li>
+          }
+        </ul>
+      </div>
+      <div class="todos-column">
         <h2>{{ 'filters.inProgress' | transloco }}</h2>
         <ul class="todos-list">
           @for (todo of todosStore.incompleteTodos(); track todo.id) {

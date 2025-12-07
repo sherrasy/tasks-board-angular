@@ -49,7 +49,7 @@ export class TodoListItem {
   public currentTodo = input.required<ITodoItem>();
 
   protected editTodoForm = this.formBuilder.group({
-    text: this.formBuilder.control<string>('', [
+    name: this.formBuilder.control<string>('', [
       Validators.required,
       trimmedMinLength(3),
       Validators.maxLength(45),
@@ -79,7 +79,7 @@ export class TodoListItem {
   protected handleOpenEditing(e: Event) {
     e.stopPropagation();
     this.todosStore.setEditingItemId(this.currentTodo().id);
-    this.editTodoForm.controls.text.setValue(this.currentTodo().text);
+    this.editTodoForm.controls.name.setValue(this.currentTodo().name);
   }
 
   protected handleCloseEditing() {
@@ -92,7 +92,7 @@ export class TodoListItem {
     if (this.editTodoForm.valid) {
       this.todosStore.updateTodo({
         ...this.currentTodo(),
-        text: this.editTodoForm.controls.text.value,
+        name: this.editTodoForm.controls.name.value,
       });
     }
   }

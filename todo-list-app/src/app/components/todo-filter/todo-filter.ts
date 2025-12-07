@@ -21,6 +21,7 @@ interface TFilterOptions {
 export class TodoFilter {
   protected readonly options: TFilterOptions[] = [
     { label: 'filters.all', value: null },
+    { label: 'filters.new', value: TODO_STATUS.NEW },
     { label: 'filters.inProgress', value: TODO_STATUS.INPROGRESS },
     { label: 'filters.completed', value: TODO_STATUS.COMPLETED },
   ];

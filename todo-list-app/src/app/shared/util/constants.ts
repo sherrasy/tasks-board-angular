@@ -26,8 +26,21 @@ export const TOAST_ICONS = {
 export const DEFAULT_FILTER_STATUS = 'ALL';
 
 export const TODO_STATUS = {
+  NEW: 'New',
   INPROGRESS: 'InProgress',
   COMPLETED: 'Completed',
+} as const;
+
+export const TASK_PRIORITY = {
+  LOW: 'Low',
+  MEDIUM: 'Medium',
+  HIGH: 'High',
+} as const;
+
+export const TASK_LABELS = {
+  BUG: 'bug',
+  FEATURE: 'feature',
+  REFACTOR: 'refactor',
 } as const;
 
 export const APP_ROUTES = {

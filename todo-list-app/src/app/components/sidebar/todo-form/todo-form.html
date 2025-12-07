@@ -4,15 +4,15 @@
     <div class="form-fields">
       <mat-form-field class="form-input-wrapper">
         <input
-          type="text"
+          type="name"
           matInput
           [placeholder]="'todoForm.placeholderTitle' | transloco"
-          formControlName="text"
+          formControlName="name"
           name="todo-title"
         />
-        @if (errorService.showErrorMessage(newTodoForm.controls.text)) {
+        @if (errorService.showErrorMessage(newTodoForm.controls.name)) {
         <mat-error>{{
-          errorService.getErrorMessage(newTodoForm.controls.text, 'Title')
+          errorService.getErrorMessage(newTodoForm.controls.name, 'Title')
         }}</mat-error>
         }
       </mat-form-field>

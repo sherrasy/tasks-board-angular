@@ -4,7 +4,20 @@
     "taskList": "Список задач",
     "taskBoard": "Доска задач",
     "emptyList": "Нет элементов. Введите новую задачу или измените фильтр",
-    "description": "Описание"
+    "description": "Описание",
+    "labels": "Метки",
+    "unassigned": "Не назначен"
+  },
+  "todo": {
+    "id": "ID",
+    "status": "Статус",
+    "priority": "Приоритет",
+    "reporter": "Создатель",
+    "assignee": "Исполнитель",
+    "estimate": "Оценка",
+    "sprint": "Спринт",
+    "completedIn": "Спринт завершения",
+    "notFound": "Задача не найдена."
   },
   "todoForm": {
     "title": "Добавить новую задачу",
@@ -16,7 +29,8 @@
     "title": "Статус",
     "all": "Все",
     "inProgress": "В процессе",
-    "completed": "Завершено"
+    "completed": "Завершено",
+    "new": "Новое"
   },
   "todoItem": {
     "deleteButton": "Удалить",
@@ -41,5 +55,14 @@
     "saveTodo": "Сохранить задачу",
     "removeTodo": "Удалить задачу",
     "saveTitle": "Сохранить новый заголовок"
-  }
+  },
+  "New": "Новая",
+  "InProgress": "В работе",
+  "Completed": "Завершена",
+  "Low": "Низкий",
+  "Medium": "Средний",
+  "High": "Высокий",
+  "bug": "Баг",
+  "feature": "Функционал",
+  "refactor": "Рефакторинг"
 }
