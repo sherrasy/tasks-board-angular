@@ -1,2 +1,3 @@
 # tasks-board-angular
-Приложение для списком задач - Angular | TS | RxJS | NGRX | SCSS
+
+Приложение для управления списком задач

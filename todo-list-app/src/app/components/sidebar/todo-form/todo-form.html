@@ -1,0 +1,43 @@
+<div [ngStyle]="{ 'margin-top': '20px' }">
+  <h2>{{ 'todoForm.title' | transloco }}</h2>
+  <form class="add-todo-form" [formGroup]="newTodoForm" (ngSubmit)="onSubmit($event)">
+    <div class="form-fields">
+      <mat-form-field class="form-input-wrapper">
+        <input
+          type="text"
+          matInput
+          [placeholder]="'todoForm.placeholderTitle' | transloco"
+          formControlName="text"
+          name="todo-title"
+        />
+        @if (errorService.showErrorMessage(newTodoForm.controls.text)) {
+        <mat-error>{{
+          errorService.getErrorMessage(newTodoForm.controls.text, 'Title')
+        }}</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="form-input-wrapper fixed-textarea">
+        <textarea
+          matInput
+          [placeholder]="'todoForm.placeholderDescription' | transloco"
+          formControlName="description"
+          rows="4"
+          name="todo-description"
+        ></textarea>
+        @if (errorService.showErrorMessage(newTodoForm.controls.description)) {
+        <mat-error>{{
+          errorService.getErrorMessage(newTodoForm.controls.description, 'Description')
+        }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <app-button
+      type="submit"
+      [isDisabled]="newTodoForm.invalid"
+      [class]="'form-button'"
+      appShowTooltip
+      [tooltipText]="TOOLTIP_TEXT.ADD_BUTTON | transloco"
+      >{{ 'todoForm.addButton' | transloco }}</app-button
+    >
+  </form>
+</div>

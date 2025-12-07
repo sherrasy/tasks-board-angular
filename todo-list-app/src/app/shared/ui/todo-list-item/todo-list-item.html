@@ -1,0 +1,64 @@
+@if (currentTodo()) {
+<li
+  class="todo-item"
+  [class.completed]="isCompleted()"
+  (click)="handleTodoClick(currentTodo().id)"
+  [class.selected]="isSelected()"
+  tabindex="0"
+  role="button"
+>
+  <mat-checkbox
+    [checked]="isCompleted()"
+    (change)="onCheckboxChange($event)"
+    (click)="$event.stopPropagation()"
+  />
+  <ng-container [ngTemplateOutlet]="isEditing() ? editTemplate : viewTemplate"></ng-container>
+</li>
+}
+
+<!-- Шаблон для просмотра todo-->
+<ng-template #viewTemplate>
+  <span
+    class="todo-text"
+    appShowTooltip
+    [tooltipText]="TOOLTIP_TEXT.LIST_ITEM | transloco"
+    (dblclick)="handleOpenEditing($event)"
+    >{{ currentTodo().text }}</span
+  >
+  <app-button
+    type="delete"
+    (action)="handleRemoveTodo($event, currentTodo().id)"
+    appShowTooltip
+    [tooltipText]="TOOLTIP_TEXT.DELETE_BUTTON | transloco"
+    >{{ 'todoItem.deleteButton' | transloco }}</app-button
+  >
+</ng-template>
+
+<!-- Шаблон для редактирования todo-->
+<ng-template #editTemplate>
+  <form [formGroup]="editTodoForm" (ngSubmit)="handleUpdateTodo($event)" class="todo-item-form">
+    <mat-form-field class="form-input-wrapper" subscriptSizing="dynamic">
+      <input
+        #editInput
+        type="text"
+        matInput
+        [placeholder]="'todoItem.editPlaceholder' | transloco"
+        formControlName="text"
+        (keydown)="handleKeydownPress($event)"
+      />
+      @if (errorService.showErrorMessage(editTodoForm.controls.text)) {
+      <mat-error>{{ errorService.getErrorMessage(editTodoForm.controls.text, 'Title') }}</mat-error>
+      }
+    </mat-form-field>
+
+    <app-button
+      type="submit"
+      (action)="handleUpdateTodo($event)"
+      appShowTooltip
+      [tooltipText]="TOOLTIP_TEXT.SAVE_TITLE | transloco"
+      [isDisabled]="editTodoForm.invalid"
+    >
+      {{ 'todoItem.saveButton' | transloco }}</app-button
+    >
+  </form>
+</ng-template>

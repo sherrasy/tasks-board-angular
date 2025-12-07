@@ -1,0 +1,28 @@
+.add-todo-form {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 24px;
+  width: 100%;
+  margin-top: 20px;
+
+  .form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+}
+
+.form-input-wrapper {
+  width: 100%;
+}
+
+.fixed-textarea {
+  max-height: 200px;
+  resize: vertical;
+}
+
+.form-button {
+  margin-bottom: 20px;
+}

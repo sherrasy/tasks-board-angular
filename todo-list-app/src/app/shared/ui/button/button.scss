@@ -1,0 +1,25 @@
+.add-button {
+  min-width: 100px;
+  padding: 13px 4px;
+  font-size: 18px;
+  background-color: #3eb56c;
+}
+
+.delete-button {
+  min-width: 70px;
+  padding: 14px 8px;
+  font-size: 16px;
+  background-color: var(--mat-sys-primary);
+}
+
+.simple-button {
+  min-width: 70px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: var(--mat-sys-tertiary-container);
+  color: var(--mat-sys-primary);
+  &:hover {
+    filter: contrast(1);
+    background-color: var(--mat-sys-inverse-on-surface);
+  }
+}
