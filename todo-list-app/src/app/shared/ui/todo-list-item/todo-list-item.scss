@@ -56,3 +56,11 @@
   padding-block: 14px;
   word-break: break-all;
 }
+
+.custom-drag-placeholder {
+  background-color: var(--mat-sys-inverse-on-surface);
+  border-radius: 6px;
+  border: 2px dashed var(--mat-sys-on-primary-fixed);
+  min-height: 60px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

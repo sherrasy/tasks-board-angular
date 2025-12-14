@@ -22,6 +22,7 @@ import { TODO_STATUS, TOOLTIP_TEXT } from '../../util/constants';
 import { trimmedMinLength } from '../../validators/trimmed-minlength.validator';
 import { Button } from '../button/button';
 import { TranslocoModule } from '@jsverse/transloco';
+import { CdkDragPlaceholder } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -34,6 +35,7 @@ import { TranslocoModule } from '@jsverse/transloco';
     MatCheckboxModule,
     ReactiveFormsModule,
     TranslocoModule,
+    CdkDragPlaceholder,
   ],
   templateUrl: './todo-list-item.html',
   styleUrl: './todo-list-item.scss',

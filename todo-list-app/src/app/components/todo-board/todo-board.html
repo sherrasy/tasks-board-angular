@@ -5,44 +5,61 @@
     </div>
     @if (todosStore.isLoading()) {
     <app-loader></app-loader>
-    } @else {
-    <div class="todos-section">
-      <div class="todos-column">
-        <h2>{{ 'filters.new' | transloco }}</h2>
-        <ul class="todos-list">
-          @for (todo of todosStore.newTodos(); track todo.id) {
-          <app-todo-list-item
-            [currentTodo]="todo"
-          ></app-todo-list-item>
-          } @empty {
-          <li>{{ 'common.emptyList' | transloco }}</li>
-          }
-        </ul>
-      </div>
-      <div class="todos-column">
-        <h2>{{ 'filters.inProgress' | transloco }}</h2>
-        <ul class="todos-list">
-          @for (todo of todosStore.incompleteTodos(); track todo.id) {
-          <app-todo-list-item
-            [currentTodo]="todo"
-          ></app-todo-list-item>
-          } @empty {
-          <li>{{ 'common.emptyList' | transloco }}</li>
-          }
-        </ul>
-      </div>
-      <div class="todos-column">
-        <h2>{{ 'filters.completed' | transloco }}</h2>
-        <ul class="todos-list">
-          @for (todo of todosStore.completedTodos(); track todo.id) {
-          <app-todo-list-item
-            [currentTodo]="todo"
-          ></app-todo-list-item>
-          } @empty {
-          <li>{{ 'common.emptyList' | transloco }}</li>
-          }
-        </ul>
-      </div>
+    } @else {    <div class="todos-section">
+
+        @for (id of ['newTodos', 'incompleteTodos', 'completedTodos']; track id) {}
+
+        <div class="todos-column">
+            <h2>{{ 'filters.new' | transloco }}</h2>
+            <ul
+                class="todos-list"
+                cdkDropList
+                id="newTodos"
+                [cdkDropListData]="todosStore.newTodos()"
+                (cdkDropListDropped)="drop($event)"
+                [cdkDropListConnectedTo]="['incompleteTodos', 'completedTodos']" >
+                @for (todo of todosStore.newTodos(); track todo.id) {
+                <app-todo-list-item [currentTodo]="todo" cdkDrag></app-todo-list-item>
+                } @empty {
+                <li>{{ 'common.emptyList' | transloco }}</li>
+                }
+            </ul>
+        </div>
+
+        <div class="todos-column">
+            <h2>{{ 'filters.inProgress' | transloco }}</h2>
+            <ul
+                class="todos-list"
+                cdkDropList
+                id="incompleteTodos"
+                [cdkDropListData]="todosStore.incompleteTodos()"
+                (cdkDropListDropped)="drop($event)"
+                [cdkDropListConnectedTo]="['newTodos', 'completedTodos']" >
+                @for (todo of todosStore.incompleteTodos(); track todo.id) {
+                <app-todo-list-item [currentTodo]="todo" cdkDrag></app-todo-list-item>
+                } @empty {
+                <li>{{ 'common.emptyList' | transloco }}</li>
+                }
+            </ul>
+        </div>
+
+        <div class="todos-column">
+            <h2>{{ 'filters.completed' | transloco }}</h2>
+            <ul
+                class="todos-list"
+                cdkDropList
+                id="completedTodos"
+                [cdkDropListData]="todosStore.completedTodos()"
+                (cdkDropListDropped)="drop($event)"
+                [cdkDropListConnectedTo]="['newTodos', 'incompleteTodos']" >
+                @for (todo of todosStore.completedTodos(); track todo.id) {
+                <app-todo-list-item [currentTodo]="todo" cdkDrag></app-todo-list-item>
+                } @empty {
+                <li>{{ 'common.emptyList' | transloco }}</li>
+                }
+            </ul>
+        </div>
+
     </div>
     }
   </section>
