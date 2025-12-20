@@ -1,0 +1,26 @@
+<div class="todo-filters-container">
+  <app-todo-filter
+    [label]="'todo.status'"
+    [options]="statusOptions"
+  />
+  <app-todo-filter
+    [label]="'todo.assignee'"
+    [options]="assigneeOptions"
+  />
+  <app-todo-filter
+    [label]="'todo.reporter'"
+    [options]="reporterOptions"
+  />
+  <app-todo-filter
+    [label]="'common.labels'"
+    [options]="labelsOptions"
+  />
+  <app-todo-filter
+    [label]="'todo.sprint'"
+    [options]="sprintOptions"
+  />
+  <app-todo-filter
+    [label]="'todo.priority'"
+    [options]="priorityOptions"
+  />
+</div>

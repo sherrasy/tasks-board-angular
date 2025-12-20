@@ -26,7 +26,6 @@
     "addButton": "Add task"
   },
   "filters": {
-    "title": "Status",
     "all": "All",
     "inProgress": "In progress",
     "completed": "Completed",

@@ -2,11 +2,13 @@ import { Routes } from '@angular/router';
 import { TodoResolver } from './shared/resolver/todos-resolver';
 import { APP_ROUTES, ROUTE_TITLES } from './shared/util/constants';
 
+// TODO: Добавить форму входа как первый экран приложения где можно выбрать юзера по имени или добавлять нового в список. Добавить страницу статистики пользователей по закрытым задачам
+
 export const routes: Routes = [
   {
     path: APP_ROUTES.MAIN,
     redirectTo: APP_ROUTES.TASKS,
-    pathMatch:'full',
+    pathMatch: 'full',
     title: ROUTE_TITLES.MAIN,
   },
   {
@@ -17,28 +19,25 @@ export const routes: Routes = [
       {
         path: APP_ROUTES.TASK_DETAILS,
         loadComponent: () =>
-          import('./components/todo-list/todo-details/todo-details').then(
-            (c) => c.TodoDetails,
-          ),
-          resolve:{
-            todo:TodoResolver,
-          },
+          import('./components/todo-list/todo-details/todo-details').then((c) => c.TodoDetails),
+        resolve: {
+          todo: TodoResolver,
+        },
       },
     ],
   },
   {
     path: APP_ROUTES.BOARD,
     loadComponent: () => import('./components/todo-board/todo-board').then((c) => c.TodoBoard),
-    title: ROUTE_TITLES.BOARD,children: [
+    title: ROUTE_TITLES.BOARD,
+    children: [
       {
         path: APP_ROUTES.TASK_DETAILS,
         loadComponent: () =>
-          import('./components/todo-list/todo-details/todo-details').then(
-            (c) => c.TodoDetails,
-          ),
-          resolve:{
-            todo:TodoResolver,
-          },
+          import('./components/todo-list/todo-details/todo-details').then((c) => c.TodoDetails),
+        resolve: {
+          todo: TodoResolver,
+        },
       },
     ],
   },

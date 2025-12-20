@@ -11,13 +11,13 @@ import { RouteStateService } from '../../services/route-state/route-state';
 import { Loader } from '../../shared/ui/loader/loader';
 import { TodoListItem } from '../../shared/ui/todo-list-item/todo-list-item';
 import { APP_ROUTES } from '../../shared/util/constants';
-import { TodoFilter } from '../todo-filter/todo-filter';
 import { TodosStore } from '../../store/todos-store';
 import { TranslocoModule } from '@jsverse/transloco';
+import { TodoFilters } from '../todo-filters/todo-filters';
 
 @Component({
   selector: 'app-todo-list',
-  imports: [TodoListItem, Loader, TodoFilter, RouterOutlet, TranslocoModule],
+  imports: [TodoListItem, Loader, TodoFilters, RouterOutlet, TranslocoModule, TodoFilters],
   templateUrl: './todo-list.html',
   styleUrl: './todo-list.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

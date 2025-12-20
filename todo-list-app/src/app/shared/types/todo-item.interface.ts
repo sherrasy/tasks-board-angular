@@ -12,7 +12,7 @@ export interface ITodoItem {
   assignee: string | null;
   reporter: string;
   labels: TTaskLabel[];
-  sprint: number | null;
+  sprint: string | null;
   priority: TTaskPriority;
-  completedSprint: number | null;
+  completedSprint: string | null;
 }

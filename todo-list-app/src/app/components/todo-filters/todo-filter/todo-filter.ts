@@ -4,12 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@jsverse/transloco';
-import { TODO_STATUS } from '../../shared/util/constants';
-
-interface TFilterOptions {
-  label: string;
-  value: string | null;
-}
+import { TFilterOption } from '../../../shared/types/filters.interface';
 
 @Component({
   selector: 'app-todo-filter',
@@ -19,13 +14,9 @@ interface TFilterOptions {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoFilter {
-  protected readonly options: TFilterOptions[] = [
-    { label: 'filters.all', value: null },
-    { label: 'filters.new', value: TODO_STATUS.NEW },
-    { label: 'filters.inProgress', value: TODO_STATUS.INPROGRESS },
-    { label: 'filters.completed', value: TODO_STATUS.COMPLETED },
-  ];
+  public options = input.required<TFilterOption[]>();
   public value = input<string | null>(null);
+  public label = input.required<string>();
 
   protected valueChange = output<string | null>();
 

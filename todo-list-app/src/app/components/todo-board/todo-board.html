@@ -1,8 +1,10 @@
-<div class="todos-content">
-  <section class="container board-container">
     <div class="header">
       <h1 class="headline">{{ 'common.taskBoard' | transloco }}</h1>
+      <app-todo-filters/>
     </div>
+    <div class="todos-content">
+  <section class="container board-container">
+
     @if (todosStore.isLoading()) {
     <app-loader></app-loader>
     } @else {    <div class="todos-section">

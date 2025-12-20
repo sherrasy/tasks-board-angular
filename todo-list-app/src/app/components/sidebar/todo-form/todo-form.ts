@@ -10,7 +10,7 @@ import { TOOLTIP_TEXT } from '../../../shared/util/constants';
 import { trimmedMinLength } from '../../../shared/validators/trimmed-minlength.validator';
 import { TodosStore } from '../../../store/todos-store';
 import { TranslocoModule } from '@jsverse/transloco';
-
+// TODO: отдельная страница/модалка для большой формы создания
 @Component({
   selector: 'app-todo-form',
   imports: [

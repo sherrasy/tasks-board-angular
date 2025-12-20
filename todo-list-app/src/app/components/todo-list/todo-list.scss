@@ -24,6 +24,10 @@
   align-items: baseline;
   gap: 70px;
   margin-bottom: 20px;
+
+  .headline {
+    line-height: 1.2;
+  }
 }
 
 .todos-list {

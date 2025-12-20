@@ -26,7 +26,6 @@
     "addButton": "Добавить задачу"
   },
   "filters": {
-    "title": "Статус",
     "all": "Все",
     "inProgress": "В процессе",
     "completed": "Завершено",

@@ -11,7 +11,7 @@
       "labels": [
         "feature"
       ],
-      "sprint": 1,
+      "sprint": "1",
       "completedSprint": null,
       "priority": "Medium"
     },
@@ -26,7 +26,7 @@
       "labels": [
         "bug"
       ],
-      "sprint": 2,
+      "sprint": "2",
       "completedSprint": null,
       "priority": "High"
     },
@@ -43,7 +43,7 @@
         "feature"
       ],
       "sprint": null,
-      "completedSprint": 1,
+      "completedSprint": "1",
       "priority": "Medium"
     },
     {
@@ -58,7 +58,7 @@
         "feature"
       ],
       "sprint": null,
-      "completedSprint": 2,
+      "completedSprint":"2",
       "priority": "Low"
     },
     {
@@ -72,7 +72,7 @@
       "labels": [
         "refactor"
       ],
-      "sprint": 1,
+      "sprint": "1",
       "completedSprint": null,
       "priority": "High"
     }

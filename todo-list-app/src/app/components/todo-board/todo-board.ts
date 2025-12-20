@@ -14,10 +14,11 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { ITodoItem } from '../../shared/types/todo-item.interface';
+import { TodoFilters } from '../todo-filters/todo-filters';
 
 @Component({
   selector: 'app-todo-board',
-  imports: [TodoListItem, Loader, RouterOutlet, TranslocoModule, CdkDropList, CdkDrag],
+  imports: [TodoListItem, TodoFilters, Loader, RouterOutlet, TranslocoModule, CdkDropList, CdkDrag],
   templateUrl: './todo-board.html',
   styleUrl: './todo-board.scss',
 })
