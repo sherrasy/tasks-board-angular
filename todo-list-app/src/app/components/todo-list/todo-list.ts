@@ -40,9 +40,4 @@ export class TodoList {
       this.routeState.navigateWithId(APP_ROUTES.TASKS, selectedId);
     });
   }
-
-  protected onFilterChange(value: string | null): void {
-    this.todosStore.onFilterChange(value);
-    this.todosStore.setSelectedItemId(null);
-  }
 }

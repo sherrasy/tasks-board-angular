@@ -3,5 +3,13 @@
     display: flex;
     gap: 8px 20px;
     flex-wrap: wrap;
+    .clear-btn {
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      & > .mat-icon {
+        margin-right: 0;
+      }
+    }
   }
 }

@@ -1,19 +1,13 @@
+import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, computed, DestroyRef, effect, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TranslocoModule } from '@jsverse/transloco';
 import { RouteStateService } from '../../services/route-state/route-state';
+import { ITodoItem, TTodoStatus } from '../../shared/types/todo-item.interface';
 import { Loader } from '../../shared/ui/loader/loader';
 import { TodoListItem } from '../../shared/ui/todo-list-item/todo-list-item';
 import { APP_ROUTES, TODO_STATUS } from '../../shared/util/constants';
 import { TodosStore } from '../../store/todos-store';
-import { TranslocoModule } from '@jsverse/transloco';
-import {
-  CdkDrag,
-  CdkDragDrop,
-  CdkDropList,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
-import { ITodoItem } from '../../shared/types/todo-item.interface';
 import { TodoFilters } from '../todo-filters/todo-filters';
 
 @Component({
@@ -41,37 +35,26 @@ export class TodoBoard {
     });
   }
 
-  private getNewStatus(dropListId: string) {
-    switch (dropListId) {
-      case 'newTodos':
-        return TODO_STATUS.NEW;
-      case 'incompleteTodos':
-        return TODO_STATUS.INPROGRESS;
-      case 'completedTodos':
-        return TODO_STATUS.COMPLETED;
-      default:
-        return TODO_STATUS.NEW;
-    }
-  }
-
   protected drop(event: CdkDragDrop<ITodoItem[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-
-      const todo = event.container.data[event.currentIndex];
+      const todo = event.item.data as ITodoItem;
       const newStatus = this.getNewStatus(event.container.id);
-      if (!todo) return;
+
       this.todosStore.updateTodo({
         ...todo,
         status: newStatus,
       });
     }
+  }
+
+  private getNewStatus(dropListId: string): TTodoStatus {
+    const statusMap: Record<string, TTodoStatus> = {
+      newTodos: TODO_STATUS.NEW,
+      incompleteTodos: TODO_STATUS.INPROGRESS,
+      completedTodos: TODO_STATUS.COMPLETED,
+    };
+    return statusMap[dropListId] || TODO_STATUS.NEW;
   }
 }

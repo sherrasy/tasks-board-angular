@@ -6,7 +6,7 @@ import { ITodoItem } from '../../../shared/types/todo-item.interface';
 import { TranslocoModule } from '@jsverse/transloco';
 import { formatDuration } from '../../../shared/util/helpers';
 
-// TODO: редактирование полей?
+// TODO: редактирование полей? фикс высоты
 
 @Component({
   selector: 'app-todo-details',

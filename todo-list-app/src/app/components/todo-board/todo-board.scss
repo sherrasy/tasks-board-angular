@@ -14,6 +14,9 @@
   &:not(.board-container) {
     max-width: 400px;
   }
+  &.board-container {
+    max-height: calc(100vh - 160px);
+  }
   &.hidden {
     display: none;
   }
@@ -22,8 +25,11 @@
 .header {
   display: flex;
   align-items: baseline;
-  gap: 70px;
-  margin-bottom: 40px;
+  gap: 20px;
+
+  .headline {
+    line-height: 1.2;
+  }
 }
 
 .todos-list {

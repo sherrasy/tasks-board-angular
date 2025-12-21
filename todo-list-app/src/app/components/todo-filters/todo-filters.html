@@ -1,26 +1,19 @@
 <div class="todo-filters-container">
-  <app-todo-filter
-    [label]="'todo.status'"
-    [options]="statusOptions"
-  />
-  <app-todo-filter
-    [label]="'todo.assignee'"
-    [options]="assigneeOptions"
-  />
-  <app-todo-filter
-    [label]="'todo.reporter'"
-    [options]="reporterOptions"
-  />
-  <app-todo-filter
-    [label]="'common.labels'"
-    [options]="labelsOptions"
-  />
-  <app-todo-filter
-    [label]="'todo.sprint'"
-    [options]="sprintOptions"
-  />
-  <app-todo-filter
-    [label]="'todo.priority'"
-    [options]="priorityOptions"
-  />
+    <button
+    matFab
+      color="warn"
+      class="clear-btn"
+      (click)="clearAll()"
+      [disabled]="!hasActiveFilters()"
+    >
+      <mat-icon>filter_alt_off</mat-icon>
+    </button>
+  @for (filter of todoFilters; track filter.key) {
+    <app-todo-filter
+      [label]="filter.label"
+      [options]="filter.options"
+      [value]="todosStore.filters()[filter.key]"
+      (valueChange)="onUpdateFilter(filter.key, $event)"
+    />
+  }
 </div>
