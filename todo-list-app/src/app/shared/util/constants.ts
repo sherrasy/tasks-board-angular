@@ -11,6 +11,9 @@ export const TOAST_TEXT = {
   UPDATE_TODO: 'toasts.updateTodoSuccess',
   ERROR_TODO: 'toasts.failedToManageTodo',
   ERROR_TODOS: 'toasts.failedToFetchTodos',
+  REGISTER_SUCCESS: 'toasts.userCreated',
+  ERROR_USER_LOAD: 'toasts.failedToLoadUsers',
+  ERROR_CREATE: 'toasts.failedToCreateUser',
 } as const;
 
 export const TOAST_VARIANT = {
@@ -48,6 +51,8 @@ export const APP_ROUTES = {
   TASKS: 'tasks',
   BOARD: 'board',
   TASK_DETAILS: ':id',
+  LOGIN: 'login',
+  USERS_STAT: 'user-stats',
   ERROR: '**',
 } as const;
 
@@ -55,5 +60,6 @@ export const ROUTE_TITLES = {
   MAIN: 'Main',
   BACKLOG: 'Backlog',
   BOARD: 'Board',
+  LOGIN: 'Login',
   ERROR: 'Error',
 } as const;

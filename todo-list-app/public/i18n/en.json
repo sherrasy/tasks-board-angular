@@ -47,13 +47,27 @@
     "deleteTodoSuccess": "Todo was removed.",
     "updateTodoSuccess": "Todo was updated.",
     "failedToManageTodo": "Failed to manage todo.",
-    "failedToFetchTodos": "Failed to fetch todos."
+    "failedToFetchTodos": "Failed to fetch todos.",
+    "userCreated": "User successfully created.",
+    "failedToCreateUser": "Failed to manage user.",
+    "failedToLoadUsers": "Failed to fetch users."
   },
   "tooltips": {
     "showDescription": "Show description. Double click opens editor.",
     "saveTodo": "Save todo",
     "removeTodo": "Remove todo",
     "saveTitle": "Save new title"
+  },
+    "auth": {
+    "loginTitle": "Sign In",
+    "registerTitle": "Registration",
+    "selectUser": "Select user",
+    "placeholderPassword": "Password (12345)",
+    "placeholderName": "New user name",
+    "loginButton": "Login",
+    "registerButton": "Register",
+    "noAccount": "Not in the list? Create new",
+    "backToLogin": "Back to user selection"
   },
   "New": "New",
   "InProgress": "In Progress",

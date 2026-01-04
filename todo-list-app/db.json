@@ -1,4 +1,16 @@
 {
+  "users": [
+    {
+      "id": "bae3236a-cf4b-4957-be90-2eb8df89ae38",
+      "name": "Ivan",
+      "password": "$2b$10$PnCnPbY.p7bm7xuADflIbeoVG5wLJR0MrcnYEqKbujeMzZX5J1CK6"
+    },
+    {
+      "id": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "name": "Maria",
+      "password": "$2b$10$gSaAFbW9zB4kaStbQsspYuY6TxQzGtJTnSeY9kHHhQk2V/eUdm.B."
+    }
+  ],
   "todos": [
     {
       "id": "1",
@@ -58,7 +70,7 @@
         "feature"
       ],
       "sprint": null,
-      "completedSprint":"2",
+      "completedSprint": "2",
       "priority": "Low"
     },
     {
