@@ -16,6 +16,8 @@ import { AddTodoDto, EditTodoDto } from '../shared/types/dto/todo.dto';
 import { ITodoItem } from '../shared/types/todo-item.interface';
 import { TTodoFilter } from '../shared/types/filters.interface';
 import { DEFAULT_TODO_FILTER } from '../components/todo-filters/consts';
+import { AuthStore } from './auth-store';
+import { formatDuration } from '../shared/util/helpers';
 
 interface TodosState {
   todos: ITodoItem[];
@@ -36,38 +38,72 @@ const initialState: TodosState = {
 export const TodosStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
-  withComputed(({ todos, selectedItemId, editingItemId, filters }) => {
-    const filteredTodos = computed(() => {
-      const currentFilters = filters();
+  withComputed(
+    ({ todos, selectedItemId, editingItemId, filters }, authStore = inject(AuthStore)) => {
+      const filteredTodos = computed(() => {
+        const currentFilters = filters();
 
-      return todos().filter((todo) => {
-        return Object.entries(currentFilters).every(([key, value]) => {
-          if (value === 'ALL' || value === null) return true;
-          const todoValue = todo[key as keyof ITodoItem];
-          if (Array.isArray(todoValue)) {
-            return todoValue.includes(value as any);
-          }
-          return todoValue === value;
+        return todos().filter((todo) => {
+          return Object.entries(currentFilters).every(([key, value]) => {
+            if (value === 'ALL' || value === null) return true;
+            const todoValue = todo[key as keyof ITodoItem];
+            if (Array.isArray(todoValue)) {
+              return todoValue.includes(value as any);
+            }
+            return todoValue === value;
+          });
         });
       });
-    });
-    return {
-      filteredTodos,
-      completedTodos: computed(() => filteredTodos().filter((todo) => todo.status === 'Completed')),
-      incompleteTodos: computed(() =>
-        filteredTodos().filter((todo) => todo.status === 'InProgress')
-      ),
-      newTodos: computed(() => filteredTodos().filter((todo) => todo.status === 'New')),
-      selectedTodo: computed(() => {
-        const selectedId = selectedItemId();
-        return selectedId ? todos().find((todo) => todo.id === selectedId) : null;
-      }),
-      editingTodo: computed(() => {
-        const editingId = editingItemId();
-        return editingId ? todos().find((todo) => todo.id === editingId) : null;
-      }),
-    };
-  }),
+
+      const currentUserTodos = computed(() =>
+        todos().filter((todo) => todo.assignee === authStore.currentUserId())
+      );
+
+      return {
+        filteredTodos,
+        completedTodos: computed(() =>
+          filteredTodos().filter((todo) => todo.status === 'Completed')
+        ),
+        incompleteTodos: computed(() =>
+          filteredTodos().filter((todo) => todo.status === 'InProgress')
+        ),
+        newTodos: computed(() => filteredTodos().filter((todo) => todo.status === 'New')),
+        selectedTodo: computed(() => {
+          const selectedId = selectedItemId();
+          return selectedId ? todos().find((todo) => todo.id === selectedId) : null;
+        }),
+        editingTodo: computed(() => {
+          const editingId = editingItemId();
+          return editingId ? todos().find((todo) => todo.id === editingId) : null;
+        }),
+        userStats: computed(() => {
+          const completed = currentUserTodos().filter((t) => t.status === 'Completed');
+
+          const totalTime = completed.reduce((acc, t) => acc + (Number(t.estimate) || 0), 0);
+
+          const bySprints = completed.reduce((acc, t) => {
+            const sprintName = t.sprint || 'No Sprint';
+            if (!acc[sprintName]) {
+              acc[sprintName] = { name: sprintName, total: 0, completedCount: 0, time: 0 };
+            }
+            acc[sprintName].total++;
+            acc[sprintName].completedCount++;
+            acc[sprintName].time += Number(t.estimate) || 0;
+            return acc;
+          }, {} as Record<string, { name: string; total: number; completedCount: number; time: number }>);
+          return {
+            totalTasks: currentUserTodos().length,
+            totalCompleted: completed.length,
+            totalTime: formatDuration(totalTime),
+            sprintStats: Object.values(bySprints).map((s) => ({
+              ...s,
+              time: formatDuration(s.time),
+            })),
+          };
+        }),
+      };
+    }
+  ),
   withMethods((store, todosApiService = inject(TodosApiService)) => {
     return {
       setSelectedItemId: (selectedItemId: string | null) => patchState(store, { selectedItemId }),

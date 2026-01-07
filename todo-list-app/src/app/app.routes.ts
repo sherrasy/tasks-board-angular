@@ -4,8 +4,6 @@ import { APP_ROUTES, ROUTE_TITLES } from './shared/util/constants';
 import { authGuard } from './shared/guard/auth-guard';
 import { loginGuard } from './shared/guard/login-guard';
 
-// TODO: Добавить страницу статистики пользователей по закрытым задачам
-
 export const routes: Routes = [
   {
     path: APP_ROUTES.LOGIN,
@@ -52,6 +50,11 @@ export const routes: Routes = [
             },
           },
         ],
+      },
+      {
+        path: APP_ROUTES.USER_STATS,
+        loadComponent: () => import('./components/user-stats/user-stats').then((m) => m.UserStats),
+        title: ROUTE_TITLES.USER_STATS,
       },
       {
         path: APP_ROUTES.ERROR,

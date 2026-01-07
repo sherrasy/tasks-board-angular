@@ -1,15 +1,21 @@
 <div class="app-nav">
-<a [routerLink]="APP_ROUTES.TASKS" routerLinkActive="activated">{{ 'common.taskList' | transloco }}</a>
-<a [routerLink]="APP_ROUTES.BOARD" routerLinkActive="activated">{{ 'common.taskBoard' | transloco }}</a>
+  <a [routerLink]="APP_ROUTES.TASKS" routerLinkActive="activated">{{
+    'common.taskList' | transloco
+  }}</a>
+  <a [routerLink]="APP_ROUTES.BOARD" routerLinkActive="activated">{{
+    'common.taskBoard' | transloco
+  }}</a>
+  <a [routerLink]="APP_ROUTES.USER_STATS" routerLinkActive="activated">{{
+    'stats.title' | transloco
+  }}</a>
   <div class="lang-switcher">
     @for (lang of availableLangs; track lang.id) {
-    <app-button
-      (click)="switchLang(lang.id)"
-      type="simple"
-      [class.active]="lang.id === activeLang"
-    >
+    <app-button (click)="switchLang(lang.id)" type="simple" [class.active]="lang.id === activeLang">
       {{ lang.label }}
     </app-button>
     }
   </div>
+  <app-button type="simple" (click)="authStore.logout()">
+    <mat-icon class="app-header-icon">exit_to_app</mat-icon>
+  </app-button>
 </div>

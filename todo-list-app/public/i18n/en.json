@@ -69,6 +69,14 @@
     "noAccount": "Not in the list? Create new",
     "backToLogin": "Back to user selection"
   },
+  "stats": {
+  "title": "My Statistics",
+  "total": "All tasks",
+  "totalDone": "Tasks completed",
+  "totalTime": "Time consumed",
+  "bySprints": "Breakdown by sprints",
+  "count": "Done"
+},
   "New": "New",
   "InProgress": "In Progress",
   "Completed": "Completed",

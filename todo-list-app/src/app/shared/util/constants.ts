@@ -52,7 +52,7 @@ export const APP_ROUTES = {
   BOARD: 'board',
   TASK_DETAILS: ':id',
   LOGIN: 'login',
-  USERS_STAT: 'user-stats',
+  USER_STATS: 'user-stats',
   ERROR: '**',
 } as const;
 
@@ -62,4 +62,5 @@ export const ROUTE_TITLES = {
   BOARD: 'Board',
   LOGIN: 'Login',
   ERROR: 'Error',
+  USER_STATS: 'My Stats',
 } as const;

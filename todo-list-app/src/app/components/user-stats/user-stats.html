@@ -1,0 +1,49 @@
+ @if (authStore.currentUser(); as user) {
+ <div class="stats-container" >
+  <div class="stats-header">
+      <h1>{{ 'stats.title' | transloco }}: {{ user.name }}</h1>
+
+      <div class="summary-cards">
+      <mat-card class="stat-card">
+          <mat-card-subtitle>{{ 'stats.total' | transloco }}</mat-card-subtitle>
+          <mat-card-title>{{ todosStore.userStats().totalTasks }}</mat-card-title>
+        </mat-card>
+      <mat-card class="stat-card">
+          <mat-card-subtitle>{{ 'stats.totalDone' | transloco }}</mat-card-subtitle>
+          <mat-card-title>{{ todosStore.userStats().totalCompleted }}</mat-card-title>
+        </mat-card>
+
+        <mat-card class="stat-card">
+          <mat-card-subtitle>{{ 'stats.totalTime' | transloco }}</mat-card-subtitle>
+          <mat-card-title>{{ todosStore.userStats().totalTime }}</mat-card-title>
+        </mat-card>
+      </div>
+      </div>
+
+      <h2>{{ 'stats.bySprints' | transloco }}</h2>
+      <table mat-table [dataSource]="todosStore.userStats().sprintStats" class="mat-elevation-z8">
+         <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>{{ 'todo.sprint' | transloco }}</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="total">
+          <th mat-header-cell *matHeaderCellDef>{{ 'stats.total' | transloco }}</th>
+          <td mat-cell *matCellDef="let element">{{ element.total }}</td>
+        </ng-container>
+        <ng-container matColumnDef="completedCount">
+          <th mat-header-cell *matHeaderCellDef>{{ 'stats.count' | transloco }}</th>
+          <td mat-cell *matCellDef="let element">{{ element.completedCount }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="time">
+          <th mat-header-cell *matHeaderCellDef>{{ 'todo.estimate' | transloco }}</th>
+          <td mat-cell *matCellDef="let element">{{ element.time }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+ }
+

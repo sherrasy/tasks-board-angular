@@ -1,0 +1,32 @@
+.stats {
+  &-container {
+    width: calc(100vw - 360px);
+    padding: 20px;
+    margin: 0 auto;
+  }
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 20px;
+  }
+}
+.summary-cards {
+  display: flex;
+  gap: 20px;
+}
+.stat-card {
+  width: 260px;
+  height: 80px;
+  text-align: center;
+  padding: 10px;
+}
+table {
+  width: 100%;
+  margin-top: 10px;
+}
+h1,
+h2 {
+  color: #333;
+}

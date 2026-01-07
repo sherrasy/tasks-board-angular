@@ -4,10 +4,12 @@ import { APP_ROUTES } from '../../../shared/util/constants';
 import { LangDefinition, TranslocoService, TranslocoModule } from '@jsverse/transloco';
 import { CommonModule } from '@angular/common';
 import { Button } from '../../../shared/ui/button/button';
+import { MatIcon } from '@angular/material/icon';
+import { AuthStore } from '../../../store/auth-store';
 
 @Component({
   selector: 'app-nav',
-  imports: [RouterLink, RouterLinkActive, TranslocoModule, CommonModule, Button],
+  imports: [RouterLink, RouterLinkActive, TranslocoModule, CommonModule, Button, MatIcon],
   templateUrl: './nav.html',
   styleUrl: './nav.scss',
 })
@@ -16,6 +18,7 @@ export class Nav {
   private translateService = inject(TranslocoService);
   protected availableLangs = this.translateService.getAvailableLangs() as LangDefinition[];
   protected activeLang = this.translateService.getActiveLang();
+  protected readonly authStore = inject(AuthStore);
 
   public switchLang(lang: string): void {
     this.translateService.setActiveLang(lang);
