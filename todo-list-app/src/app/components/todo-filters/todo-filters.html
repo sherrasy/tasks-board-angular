@@ -8,7 +8,7 @@
     >
       <mat-icon>filter_alt_off</mat-icon>
     </button>
-  @for (filter of todoFilters; track filter.key) {
+@for (filter of filterConfigs(); track filter.key) {
     <app-todo-filter
       [label]="filter.label"
       [options]="filter.options"

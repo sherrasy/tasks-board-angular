@@ -11,3 +11,9 @@ export interface TFilterOption {
   label: string;
   value: string | null;
 }
+
+export interface IFilterConfig {
+  key: keyof TTodoFilter;
+  label: string;
+  options: TFilterOption[];
+}

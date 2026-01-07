@@ -47,11 +47,17 @@ export class Login {
     password: this.formBuilder.control<string>('', [Validators.required, trimmedMinLength(5)]),
   });
 
+  protected toggleMode(): void {
+    this.isRegisterMode = !this.isRegisterMode;
+    this.loginForm.reset();
+    this.registerForm.reset();
+  }
+
   protected onLogin(e: Event): void {
     e.preventDefault();
     this.loginForm.markAllAsTouched();
-
     if (this.loginForm.invalid) return;
+
     const { userId, password } = this.loginForm.getRawValue();
     this.authStore.login({ userId, pass: password });
     this.loginForm.reset();
@@ -60,13 +66,11 @@ export class Login {
   protected onRegister(e: Event): void {
     e.preventDefault();
     this.registerForm.markAllAsTouched();
-
     if (this.registerForm.invalid) return;
 
     const { name, password } = this.registerForm.getRawValue();
     this.authStore.register({ name, pass: password });
-    this.registerForm.reset();
 
-    this.isRegisterMode = false;
+    this.toggleMode();
   }
 }

@@ -42,11 +42,13 @@ export const TodosStore = signalStore(
     ({ todos, selectedItemId, editingItemId, filters }, authStore = inject(AuthStore)) => {
       const filteredTodos = computed(() => {
         const currentFilters = filters();
-
         return todos().filter((todo) => {
           return Object.entries(currentFilters).every(([key, value]) => {
-            if (value === 'ALL' || value === null) return true;
+            if (value === 'ALL') return true;
             const todoValue = todo[key as keyof ITodoItem];
+            if (value === null) {
+              return todoValue === null || todoValue === undefined;
+            }
             if (Array.isArray(todoValue)) {
               return todoValue.includes(value as any);
             }
