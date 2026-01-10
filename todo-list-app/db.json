@@ -55,7 +55,7 @@
         "feature",
         "refactor"
       ],
-      "sprint": "12",
+      "sprint": "",
       "completedSprint": "1",
       "priority": "Medium"
     },
@@ -110,12 +110,12 @@
       "description": "Update npm packages to latest versions.",
       "status": "New",
       "estimate": 7200000,
-      "assignee": null,
+      "assignee": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
       "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
       "labels": [
         "refactor"
       ],
-      "sprint": "2",
+      "sprint": null,
       "completedSprint": null,
       "priority": "Low"
     },
@@ -128,7 +128,7 @@
       "assignee": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
       "reporter": null,
       "labels": [],
-      "sprint": "",
+      "sprint": null,
       "completedSprint": null,
       "priority": "Medium"
     },
@@ -181,12 +181,12 @@
       "description": "Create weekly database backup.",
       "status": "Completed",
       "estimate": 3600000,
-      "assignee": null,
+      "assignee": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
       "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
       "labels": [
         "maintenance"
       ],
-      "sprint": null,
+      "sprint": "",
       "completedSprint": "2",
       "priority": "Low"
     },
@@ -232,6 +232,19 @@
       "sprint": "1",
       "completedSprint": null,
       "priority": "High"
+    },
+    {
+      "name": "sdf",
+      "description": "sdf",
+      "priority": "Medium",
+      "sprint": "",
+      "assignee": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "estimate": 3600000,
+      "labels": [],
+      "id": "f0f1",
+      "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "status": "New",
+      "completedSprint": null
     }
   ]
 }

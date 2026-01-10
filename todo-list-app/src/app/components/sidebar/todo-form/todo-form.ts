@@ -52,6 +52,7 @@ export class TodoForm {
 
   protected readonly priorities = Object.values(TASK_PRIORITY);
   protected readonly availableLabels = Object.values(TASK_LABELS);
+  protected readonly users = this.authStore.users();
 
   private readonly HOUR_TO_MS = 3_600_000;
 

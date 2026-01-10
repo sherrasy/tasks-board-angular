@@ -27,6 +27,7 @@
     "labelPriority": "Priority",
     "labelEstimate": "Estimate (hours)",
     "labelLabels": "Labels",
+    "labelAssignee": "Assignee",
     "labelSprint": "Sprint",
     "labelDescription": "Description",
     "placeholderTitle": "Enter task title",
@@ -83,7 +84,9 @@
   "totalDone": "Tasks completed",
   "totalTime": "Time consumed",
   "bySprints": "Breakdown by sprints",
-  "count": "Done"
+  "count": "Done",
+    "bestSprints": "Best sprints by completion"
+
 },
   "New": "New",
   "InProgress": "In Progress",

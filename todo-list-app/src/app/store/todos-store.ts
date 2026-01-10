@@ -15,7 +15,7 @@ import { TodosApiService } from '../services/todos-api/todos-api';
 import { AddTodoDto, EditTodoDto } from '../shared/types/dto/todo.dto';
 import { ITodoItem } from '../shared/types/todo-item.interface';
 import { TTodoFilter } from '../shared/types/filters.interface';
-import { DEFAULT_TODO_FILTER } from '../components/todo-filters/consts';
+import { DEFAULT_TODO_FILTER, UNASSIGNED_VALUE } from '../components/todo-filters/consts';
 import { AuthStore } from './auth-store';
 import { formatDuration } from '../shared/util/helpers';
 
@@ -44,10 +44,11 @@ export const TodosStore = signalStore(
         const currentFilters = filters();
         return todos().filter((todo) => {
           return Object.entries(currentFilters).every(([key, value]) => {
-            if (value === 'ALL') return true;
+            if (value === 'ALL' || value === null) return true;
             const todoValue = todo[key as keyof ITodoItem];
-            if (value === null) {
-              return todoValue === null || todoValue === undefined;
+            console.log(todo, key);
+            if (value === UNASSIGNED_VALUE) {
+              return todoValue === null || todoValue === undefined || todoValue === '';
             }
             if (Array.isArray(todoValue)) {
               return todoValue.includes(value as any);
@@ -79,22 +80,30 @@ export const TodosStore = signalStore(
           return editingId ? todos().find((todo) => todo.id === editingId) : null;
         }),
         userStats: computed(() => {
-          const completed = currentUserTodos().filter((t) => t.status === 'Completed');
+          const allUserTodos = currentUserTodos();
+          const completed = allUserTodos.filter((t) => t.status === 'Completed');
 
           const totalTime = completed.reduce((acc, t) => acc + (Number(t.estimate) || 0), 0);
 
-          const bySprints = completed.reduce((acc, t) => {
+          const bySprints = allUserTodos.reduce((acc, t) => {
             const sprintName = t.sprint || 'No Sprint';
+
             if (!acc[sprintName]) {
               acc[sprintName] = { name: sprintName, total: 0, completedCount: 0, time: 0 };
             }
+
             acc[sprintName].total++;
-            acc[sprintName].completedCount++;
-            acc[sprintName].time += Number(t.estimate) || 0;
+
+            if (t.status === 'Completed') {
+              acc[sprintName].completedCount++;
+              acc[sprintName].time += Number(t.estimate) || 0;
+            }
+
             return acc;
           }, {} as Record<string, { name: string; total: number; completedCount: number; time: number }>);
+
           return {
-            totalTasks: currentUserTodos().length,
+            totalTasks: allUserTodos.length,
             totalCompleted: completed.length,
             totalTime: formatDuration(totalTime),
             sprintStats: Object.values(bySprints).map((s) => ({

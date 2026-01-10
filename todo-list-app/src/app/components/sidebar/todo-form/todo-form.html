@@ -46,8 +46,18 @@
       </mat-form-field>
 
       <mat-form-field>
+        <mat-label>{{ 'todoForm.labelAssignee' | transloco }}</mat-label>
+        <mat-select formControlName="assignee">
+          @for (user of users; track user) {
+          <mat-option [value]="user.id">{{ user.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
         <mat-label>{{ 'todoForm.labelSprint' | transloco }}</mat-label>
         <input matInput formControlName="sprint" />
+
       </mat-form-field>
 
       <mat-form-field class="full-width">

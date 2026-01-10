@@ -10,6 +10,10 @@
     align-items: center;
     gap: 40px;
     margin-bottom: 20px;
+
+    .user-name {
+      color: var(--mat-sys-primary);
+    }
   }
 }
 .summary-cards {
@@ -17,7 +21,8 @@
   gap: 20px;
 }
 .stat-card {
-  width: 260px;
+  min-width: 180px;
+  width: fit-content;
   height: 80px;
   text-align: center;
   padding: 10px;
@@ -28,5 +33,67 @@ table {
 }
 h1,
 h2 {
+  line-height: 1.6;
   color: #333;
+}
+
+.chart-section {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+
+  h3 {
+    margin: 0 0 20px 0;
+    color: var(--mat-sys-primary);
+  }
+}
+
+.sprint-grid {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px 0;
+}
+
+.sprint-card {
+  width: 150px;
+  text-align: center;
+
+  .canvas-wrapper {
+    position: relative;
+    height: 120px;
+    width: 120px;
+    margin: 0 auto;
+
+    .center-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      .percent {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--mat-sys-primary);
+      }
+    }
+  }
+
+  .sprint-info {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .name {
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .count {
+      font-size: 0.8rem;
+      color: #666;
+    }
+  }
 }

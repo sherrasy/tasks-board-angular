@@ -1,3 +1,12 @@
+@use '@angular/material' as mat;
+
 .filter-container {
-  max-width: 180px;
+  width: 120px;
+  font-size: 12px;
+  @include mat.form-field-overrides(
+    (
+      container-vertical-padding: 8px,
+      container-height: 40px,
+    )
+  );
 }

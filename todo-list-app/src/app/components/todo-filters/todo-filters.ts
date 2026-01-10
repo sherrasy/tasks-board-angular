@@ -22,7 +22,7 @@ export class TodoFilters {
     const allUsers = this.authStore.users().map((u) => ({ label: u.name, value: u.id }));
     const assigneeOptions: TFilterOption[] = [
       { label: 'ALL', value: 'ALL' },
-      { label: 'NONE (Unassigned)', value: null },
+      { label: UNASSIGNED_VALUE, value: UNASSIGNED_VALUE },
       ...allUsers,
     ];
 
@@ -39,8 +39,8 @@ export class TodoFilters {
 
     const sprintOptions: TFilterOption[] = [
       { label: 'ALL', value: 'ALL' },
-      { label: UNASSIGNED_VALUE, value: null },
-      ...uniqueSprints.map((s) => ({ label: `Sprint ${s}`, value: s })),
+      { label: UNASSIGNED_VALUE, value: UNASSIGNED_VALUE },
+      ...uniqueSprints.map((s) => ({ label: s, value: s })),
     ];
 
     return [
