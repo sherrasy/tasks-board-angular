@@ -53,8 +53,9 @@
 
 .todo-text {
   width: 100%;
+  min-width: 50px;
   padding-block: 14px;
-  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 .custom-drag-placeholder {

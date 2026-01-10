@@ -6,7 +6,8 @@
     "emptyList": "There are no items. Type new task or change filter.",
     "description": "Description",
     "labels": "Labels",
-    "unassigned": "Unassigned"
+    "unassigned": "Unassigned",
+    "cancel": "Cancel"
   },
   "todo": {
     "id": "ID",
@@ -19,10 +20,16 @@
     "completedIn": "Completed Sprint",
     "notFound": "Todo item not found."
   },
-  "todoForm": {
+"todoForm": {
     "title": "Add new todo",
-    "placeholderTitle": "Todo title",
-    "placeholderDescription": "Todo description",
+    "labelTitle": "Title",
+    "labelPriority": "Priority",
+    "labelEstimate": "Estimate (hours)",
+    "labelLabels": "Labels",
+    "labelSprint": "Sprint",
+    "labelDescription": "Description",
+    "placeholderTitle": "Enter task title",
+    "placeholderDescription": "Describe what needs to be done...",
     "addButton": "Add task"
   },
   "filters": {

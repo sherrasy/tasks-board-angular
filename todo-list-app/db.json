@@ -34,7 +34,7 @@
       "status": "New",
       "estimate": 14400000,
       "assignee": null,
-      "reporter": "user3",
+      "reporter": "bae3236a-cf4b-4957-be90-2eb8df89ae38",
       "labels": [
         "bug"
       ],
@@ -46,7 +46,7 @@
       "id": "3",
       "name": "Refactor auth module",
       "description": "Proident in fugiat est consectetur incididunt pariatur veniam deserunt proident. Nulla aliqua dolore eiusmod et exercitation ea in exercitation voluptate proident ex ut incididunt. Id pariatur ad veniam amet reprehenderit do officia aute non tempor eiusmod.",
-      "status": "Completed",
+      "status": "InProgress",
       "estimate": 28800000,
       "assignee": "bae3236a-cf4b-4957-be90-2eb8df89ae38",
       "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
@@ -62,7 +62,7 @@
       "id": "4",
       "name": "Get a cookie",
       "description": "Ex nostrud ea cillum nostrud.",
-      "status": "InProgress",
+      "status": "Completed",
       "estimate": 1800000,
       "assignee": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
       "reporter": "bae3236a-cf4b-4957-be90-2eb8df89ae38",

@@ -6,7 +6,8 @@
     "emptyList": "Нет элементов. Введите новую задачу или измените фильтр",
     "description": "Описание",
     "labels": "Метки",
-    "unassigned": "Не назначен"
+    "unassigned": "Не назначен",
+    "cancel": "Отмена"
   },
   "todo": {
     "id": "ID",
@@ -19,10 +20,16 @@
     "completedIn": "Спринт завершения",
     "notFound": "Задача не найдена."
   },
-  "todoForm": {
+"todoForm": {
     "title": "Добавить новую задачу",
-    "placeholderTitle": "Заголовок задачи",
-    "placeholderDescription": "Описание задачи",
+    "labelTitle": "Заголовок",
+    "labelPriority": "Приоритет",
+    "labelEstimate": "Оценка (в часах)",
+    "labelLabels": "Метки",
+    "labelSprint": "Спринт",
+    "labelDescription": "Описание",
+    "placeholderTitle": "Введите заголовок задачи",
+    "placeholderDescription": "Опишите, что именно нужно сделать...",
     "addButton": "Добавить задачу"
   },
   "filters": {

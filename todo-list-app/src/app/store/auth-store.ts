@@ -112,6 +112,11 @@ export const AuthStore = signalStore(
         localStorage.removeItem('currentUser');
         router.navigate([APP_ROUTES.LOGIN]);
       },
+      getUserNameById: (id: string | null) => {
+        if (!id) return null;
+        const user = store.users().find((u) => u.id === id);
+        return user ? user.name : id;
+      },
     };
   }),
   withHooks({
