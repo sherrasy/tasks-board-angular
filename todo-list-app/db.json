@@ -9,6 +9,11 @@
       "id": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
       "name": "Maria",
       "password": "$2b$10$gSaAFbW9zB4kaStbQsspYuY6TxQzGtJTnSeY9kHHhQk2V/eUdm.B."
+    },
+    {
+      "id": "90bd32bb-906e-4a91-a5be-3de5f69242cb",
+      "name": "Nostya",
+      "password": "$2b$10$PEn3R2PV7LtyJcFV.FCBd.Aieo0YcR28.K42cBzdh4DVwxcgdHNHi"
     }
   ],
   "todos": [
@@ -33,7 +38,7 @@
       "description": "Ea aute incididunt esse minim adipisicing tempor commodo pariatur reprehenderit deserunt qui labore proident.",
       "status": "New",
       "estimate": 14400000,
-      "assignee": null,
+      "assignee": "90bd32bb-906e-4a91-a5be-3de5f69242cb",
       "reporter": "bae3236a-cf4b-4957-be90-2eb8df89ae38",
       "labels": [
         "bug"

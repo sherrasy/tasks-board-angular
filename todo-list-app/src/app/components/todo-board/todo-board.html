@@ -1,3 +1,6 @@
+@if (showDetailsContainer()) {
+  <div class="backdrop" (click)="todosStore.setSelectedItemId(null)"></div>
+}
 <div class="header">
   <h1 class="headline">{{ 'common.taskBoard' | transloco }}</h1>
   <app-todo-filters />
@@ -59,7 +62,7 @@
     }
   </section>
 
-  <section class="container" [class.hidden]="!showDetailsContainer()">
+  <section class="container drawer" [class.hidden]="!showDetailsContainer()">
     <router-outlet />
   </section>
 </div>

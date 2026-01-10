@@ -8,6 +8,7 @@ import { DEFAULT_TODO_FILTER, UNASSIGNED_VALUE } from './consts';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
+// TODO: добавить переводы label
 @Component({
   selector: 'app-todo-filters',
   imports: [TodoFilter, MatButtonModule, MatIconModule],
