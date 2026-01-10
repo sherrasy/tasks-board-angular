@@ -112,6 +112,7 @@ export class TodoListItem {
     this.todosStore.updateTodo({
       ...this.currentTodo(),
       status: e.checked ? TODO_STATUS.COMPLETED : TODO_STATUS.INPROGRESS,
+      completedSprint: e.checked ? this.currentTodo().sprint : null,
     });
   }
 

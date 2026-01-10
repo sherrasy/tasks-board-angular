@@ -21,7 +21,8 @@
     "notFound": "Todo item not found."
   },
 "todoForm": {
-    "title": "Add new todo",
+    "addTitle": "Add new todo",
+    "editTitle": "Edit todo",
     "labelTitle": "Title",
     "labelPriority": "Priority",
     "labelEstimate": "Estimate (hours)",

@@ -21,7 +21,8 @@
     "notFound": "Задача не найдена."
   },
 "todoForm": {
-    "title": "Добавить новую задачу",
+    "addTitle": "Добавить новую задачу",
+    "editTitle": "Редактировать задачу",
     "labelTitle": "Заголовок",
     "labelPriority": "Приоритет",
     "labelEstimate": "Оценка (в часах)",

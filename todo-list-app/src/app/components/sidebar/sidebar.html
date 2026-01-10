@@ -6,5 +6,7 @@
     </div>
     <app-nav></app-nav>
   </div>
-  <app-todo-form *appHideForUnauthorized></app-todo-form>
+  <app-button type="submit" class="form-button" (click)="openCreateTodo()" *appHideForUnauthorized c>
+    <span class="button-text"><mat-icon>add</mat-icon> {{ 'todoForm.addButton' | transloco }}</span></app-button
+  >
 </div>

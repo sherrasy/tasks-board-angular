@@ -1,14 +1,14 @@
-<div [ngStyle]="{ 'margin-top': '20px' }">
-  <h2>{{ 'todoForm.title' | transloco }}</h2>
-  <form class="add-todo-form" [formGroup]="newTodoForm" (ngSubmit)="onSubmit($event)">
-    <div class="form-fields">
-      <mat-form-field class="form-input-wrapper">
+<div class="form-container">
+  <h2 mat-dialog-title>{{ (isEditMode ? 'todoForm.editTitle' : 'todoForm.addTitle') | transloco }}</h2>
+
+  <form [formGroup]="newTodoForm" (ngSubmit)="onSubmit($event)" class="form-content">
+    <div class="form-grid">
+      <mat-form-field class="full-width">
+        <mat-label>{{ 'todoForm.labelTitle' | transloco }}</mat-label>
         <input
-          type="name"
           matInput
-          [placeholder]="'todoForm.placeholderTitle' | transloco"
           formControlName="name"
-          name="todo-title"
+          [placeholder]="'todoForm.placeholderTitle' | transloco"
         />
         @if (errorService.showErrorMessage(newTodoForm.controls.name)) {
         <mat-error>{{
@@ -16,13 +16,47 @@
         }}</mat-error>
         }
       </mat-form-field>
-      <mat-form-field class="form-input-wrapper fixed-textarea">
+
+      <mat-form-field>
+        <mat-label>{{ 'todoForm.labelPriority' | transloco }}</mat-label>
+        <mat-select formControlName="priority">
+          @for (p of priorities; track p) {
+          <mat-option [value]="p">{{ p }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>{{ 'todoForm.labelEstimate' | transloco }}</mat-label>
+        <input type="number" matInput formControlName="estimateHours" step="0.5" />
+        @if (errorService.showErrorMessage(newTodoForm.controls.estimateHours)) {
+        <mat-error>{{
+          errorService.getErrorMessage(newTodoForm.controls.estimateHours, 'Estimate')
+        }}</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>{{ 'todoForm.labelLabels' | transloco }}</mat-label>
+        <mat-select formControlName="labels" multiple>
+          @for (label of availableLabels; track label) {
+          <mat-option [value]="label">{{ label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>{{ 'todoForm.labelSprint' | transloco }}</mat-label>
+        <input matInput formControlName="sprint" />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>{{ 'todoForm.labelDescription' | transloco }}</mat-label>
         <textarea
           matInput
-          [placeholder]="'todoForm.placeholderDescription' | transloco"
           formControlName="description"
-          rows="4"
-          name="todo-description"
+          rows="3"
+          [placeholder]="'todoForm.placeholderDescription' | transloco"
         ></textarea>
         @if (errorService.showErrorMessage(newTodoForm.controls.description)) {
         <mat-error>{{
@@ -31,13 +65,19 @@
         }
       </mat-form-field>
     </div>
-    <app-button
-      type="submit"
-      [isDisabled]="newTodoForm.invalid"
-      [class]="'form-button'"
-      appShowTooltip
-      [tooltipText]="TOOLTIP_TEXT.ADD_BUTTON | transloco"
-      >{{ 'todoForm.addButton' | transloco }}</app-button
-    >
+
+    <div class="actions">
+      <app-button type="delete" (click)="onCancel()" [class]="'secondary'">
+        {{ 'common.cancel' | transloco }}
+      </app-button>
+      <app-button
+        type="submit"
+        [isDisabled]="newTodoForm.invalid"
+        appShowTooltip
+        [tooltipText]="TOOLTIP_TEXT.ADD_BUTTON | transloco"
+      >
+        {{ 'todoItem.saveButton' | transloco }}
+      </app-button>
+    </div>
   </form>
 </div>

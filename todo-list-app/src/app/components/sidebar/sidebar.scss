@@ -27,4 +27,14 @@
       border-radius: 2px;
     }
   }
+  .form-button {
+    align-self: center;
+    padding-bottom: 30px;
+  }
+  .button-text {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-inline: 10px;
+  }
 }

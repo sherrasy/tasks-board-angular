@@ -5,6 +5,7 @@
 .todo-header {
   margin-bottom: 24px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 20px;
   .todo-id {

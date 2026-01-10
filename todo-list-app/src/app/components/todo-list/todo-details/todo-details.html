@@ -4,6 +4,7 @@
     <header class="todo-header">
       <span class="todo-id">#{{ todo.id }}</span>
       <h2>{{ todo.name }}</h2>
+      <app-button type="simple" class="active" (click)="onEdit()" ><mat-icon>edit</mat-icon></app-button>
     </header>
 
     <div class="metadata-grid">
