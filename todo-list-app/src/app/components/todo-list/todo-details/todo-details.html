@@ -1,8 +1,75 @@
-<div>
-  @if(currentDescription() !== null){
+<div class="todo-details-wrapper">
+  @if(currentTodo(); as todo){
   <div class="todo-details">
-    <h3>{{ 'common.description' | transloco }}</h3>
-    <p>{{ currentDescription() }}</p>
+    <header class="todo-header">
+      <span class="todo-id">#{{ todo.id }}</span>
+      <h2>{{ todo.name }}</h2>
+      <app-button type="simple" (click)="onEdit()">
+        <mat-icon>edit</mat-icon>
+      </app-button>
+    </header>
+
+    <div class="metadata-grid">
+      <div class="meta-item">
+        <span class="meta-label">{{ 'todo.status' | transloco }}</span>
+        <span class="meta-value status-badge" [attr.data-status]="todo.status">
+          {{ `filters.${todo.status.toLowerCase()}`  | transloco }}
+        </span>
+      </div>
+
+      <div class="meta-item">
+        <span class="meta-label">{{ 'todo.priority' | transloco }}</span>
+        <span class="meta-value priority-text" [attr.data-priority]="todo.priority">
+          {{`filters.${todo.priority.toLowerCase()}` | transloco }}
+        </span>
+      </div>
+
+      <div class="meta-item">
+        <span class="meta-label">{{ 'todo.reporter' | transloco }}</span>
+        <span class="meta-value">{{ reporterName() }}</span>
+      </div>
+
+      <div class="meta-item">
+        <span class="meta-label">{{ 'todo.assignee' | transloco }}</span>
+        <span class="meta-value assignee">
+          {{ assigneeName() || ('common.unassigned' | transloco) }}
+        </span>
+      </div>
+
+      @if(formattedEstimate() !== null) {
+      <div class="meta-item">
+        <span class="meta-label">{{ 'todo.estimate' | transloco }}</span>
+        <span class="meta-value">{{ formattedEstimate() }}</span>
+      </div>
+      } @if(todo.sprint !== null) {
+      <div class="meta-item">
+        <span class="meta-label">{{ 'todo.sprint' | transloco }}</span>
+        <span class="meta-value">{{ todo.sprint }}</span>
+      </div>
+      }
+    </div>
+
+    @if(todo.labels&&todo.labels.length > 0) {
+    <section class="section">
+      <h3>{{ 'common.labels' | transloco }}</h3>
+      <div class="labels-container">
+        @for(label of todo.labels; track label) {
+        <span [className]="`chip chip-${label}`">{{ `filters.${label}` | transloco }}</span>
+        }
+      </div>
+    </section>
+    } @if(todo.description) {
+    <section class="section">
+      <h3>{{ 'common.description' | transloco }}</h3>
+      <div class="description-box">
+        {{ todo.description }}
+      </div>
+    </section>
+    }
+  </div>
+  } @else {
+  <div class="not-found-state">
+    <p>{{ 'todo.notFound' | transloco }}</p>
   </div>
   }
 </div>

@@ -1,0 +1,96 @@
+<div class="login-content">
+  <div class="login-container">
+    <h2>{{ (isRegisterMode ? 'auth.registerTitle' : 'auth.loginTitle') | transloco }}</h2>
+
+    @if (!isRegisterMode) {
+    <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="onLogin($event)">
+      <div class="form-fields">
+        <mat-form-field class="form-input-wrapper" hideRequiredMarker>
+          <mat-label>{{ 'auth.selectUser' | transloco }}</mat-label>
+          <mat-select formControlName="userId">
+            @for (user of authStore.users(); track user.id) {
+            <mat-option [value]="user.id">{{ user.name }}</mat-option>
+            }
+          </mat-select>
+          @if (errorService.showErrorMessage(loginForm.controls.userId)) {
+          <mat-error>{{
+            errorService.getErrorMessage(loginForm.controls.userId, 'User')
+          }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="form-input-wrapper">
+          <input
+            matInput
+            type="password"
+            [placeholder]="'auth.placeholderPassword' | transloco"
+            formControlName="password"
+          />
+          @if (errorService.showErrorMessage(loginForm.controls.password)) {
+          <mat-error>{{
+            errorService.getErrorMessage(loginForm.controls.password, 'Password')
+          }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <div class="form-actions">
+        <app-button
+          type="submit"
+          [isDisabled]="loginForm.invalid || authStore.isLoading()"
+          class="form-button"
+        >
+          {{ 'auth.loginButton' | transloco }}
+        </app-button>
+        <p class="switch-mode-link" (click)="toggleMode()">
+          {{ 'auth.noAccount' | transloco }}
+        </p>
+      </div>
+    </form>
+    } @else {
+    <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="onRegister($event)">
+      <div class="form-fields">
+        <mat-form-field class="form-input-wrapper">
+          <input
+            matInput
+            [placeholder]="'auth.placeholderName' | transloco"
+            formControlName="name"
+          />
+          @if (errorService.showErrorMessage(registerForm.controls.name)) {
+          <mat-error>{{
+            errorService.getErrorMessage(registerForm.controls.name, 'Name')
+          }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="form-input-wrapper">
+          <input
+            matInput
+            type="password"
+            [placeholder]="'auth.placeholderPassword' | transloco"
+            formControlName="password"
+          />
+          @if (errorService.showErrorMessage(registerForm.controls.password)) {
+          <mat-error>{{
+            errorService.getErrorMessage(registerForm.controls.password, 'Password')
+          }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <div class="form-actions">
+        <app-button
+          type="submit"
+          [isDisabled]="registerForm.invalid || authStore.isLoading()"
+          class="form-button"
+        >
+          {{ 'auth.registerButton' | transloco }}
+        </app-button>
+        <p class="switch-mode-link" (click)="toggleMode()">
+          {{ 'auth.backToLogin' | transloco }}
+        </p>
+      </div>
+    </form>
+    }
+  </div>
+</div>

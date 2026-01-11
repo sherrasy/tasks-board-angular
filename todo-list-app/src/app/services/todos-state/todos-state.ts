@@ -19,11 +19,11 @@ export class TodosStateService {
   public filterValue: WritableSignal<string | null> = signal(null);
 
   public completedTodos = computed(() =>
-    this.todos().filter((todo) => todo.status === 'Completed'),
+    this.todos().filter((todo) => todo.status === 'Completed')
   );
 
   public incompleteTodos = computed(() =>
-    this.todos().filter((todo) => todo.status === 'InProgress'),
+    this.todos().filter((todo) => todo.status === 'InProgress')
   );
 
   public selectedTodo = computed(() => {
@@ -74,12 +74,12 @@ export class TodosStateService {
   }
 
   public addNewTodo(todoData: AddTodoDto): void {
-    if (!todoData.text.trim() && !todoData.description.trim()) return;
+    if (!todoData.name.trim() && !todoData.description.trim()) return;
     this.todosApiService
       .addNewTodo(todoData)
       .pipe(
         filter((newTodo) => !!newTodo),
-        takeUntilDestroyed(this.destroyRef),
+        takeUntilDestroyed(this.destroyRef)
       )
       .subscribe((newTodo) => {
         this.todos.update((currentTodos) => [...currentTodos, newTodo]);
@@ -91,11 +91,11 @@ export class TodosStateService {
       .editTodo(data)
       .pipe(
         filter((updatedTodo) => !!updatedTodo),
-        takeUntilDestroyed(this.destroyRef),
+        takeUntilDestroyed(this.destroyRef)
       )
       .subscribe((updatedTodo) => {
         this.todos.update((currentTodos) =>
-          currentTodos.map((todo) => (todo.id === updatedTodo.id ? updatedTodo : todo)),
+          currentTodos.map((todo) => (todo.id === updatedTodo.id ? updatedTodo : todo))
         );
         this.toggleEditing(null);
       });

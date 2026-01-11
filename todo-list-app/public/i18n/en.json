@@ -4,19 +4,48 @@
     "taskList": "Todo list",
     "taskBoard": "Todo board",
     "emptyList": "There are no items. Type new task or change filter.",
-    "description": "Description"
+    "description": "Description",
+    "labels": "Labels",
+    "unassigned": "Unassigned",
+    "cancel": "Cancel"
+  },
+  "todo": {
+    "id": "ID",
+    "status": "Status",
+    "priority": "Priority",
+    "reporter": "Reporter",
+    "assignee": "Assignee",
+    "estimate": "Estimate",
+    "sprint": "Sprint",
+    "completedIn": "Completed Sprint",
+    "notFound": "Todo item not found."
   },
   "todoForm": {
-    "title": "Add new todo",
-    "placeholderTitle": "Todo title",
-    "placeholderDescription": "Todo description",
+    "addTitle": "Add new todo",
+    "editTitle": "Edit todo",
+    "labelTitle": "Title",
+    "labelPriority": "Priority",
+    "labelEstimate": "Estimate (hours)",
+    "labelLabels": "Labels",
+    "labelAssignee": "Assignee",
+    "labelSprint": "Sprint",
+    "labelDescription": "Description",
+    "placeholderTitle": "Enter task title",
+    "placeholderDescription": "Describe what needs to be done...",
     "addButton": "Add task"
   },
   "filters": {
-    "title": "Status",
     "all": "All",
-    "inProgress": "In progress",
-    "completed": "Completed"
+    "none": "NONE",
+    "inprogress": "In progress",
+    "completed": "Completed",
+    "new": "New",
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "bug": "Bug",
+    "feature": "Feature",
+    "refactor": "Refactor"
   },
   "todoItem": {
     "deleteButton": "Delete",
@@ -34,12 +63,35 @@
     "deleteTodoSuccess": "Todo was removed.",
     "updateTodoSuccess": "Todo was updated.",
     "failedToManageTodo": "Failed to manage todo.",
-    "failedToFetchTodos": "Failed to fetch todos."
+    "failedToFetchTodos": "Failed to fetch todos.",
+    "userCreated": "User successfully created.",
+    "failedToCreateUser": "Failed to manage user.",
+    "failedToLoadUsers": "Failed to fetch users."
   },
   "tooltips": {
-    "showDescription": "Show description. Double click opens editor.",
+    "showDescription": "Show description and editor",
     "saveTodo": "Save todo",
     "removeTodo": "Remove todo",
     "saveTitle": "Save new title"
+  },
+  "auth": {
+    "loginTitle": "Sign In",
+    "registerTitle": "Registration",
+    "selectUser": "Select user",
+    "placeholderPassword": "Password (12345)",
+    "placeholderName": "New user name",
+    "loginButton": "Login",
+    "registerButton": "Register",
+    "noAccount": "Not in the list? Create new",
+    "backToLogin": "Back to user selection"
+  },
+  "stats": {
+    "title": "My Statistics",
+    "total": "All tasks",
+    "totalDone": "Tasks completed",
+    "totalTime": "Time consumed",
+    "bySprints": "Breakdown by sprints",
+    "count": "Done",
+    "bestSprints": "Best sprints by completion"
   }
 }

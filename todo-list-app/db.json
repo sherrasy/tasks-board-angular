@@ -1,28 +1,240 @@
 {
+  "users": [
+    {
+      "id": "bae3236a-cf4b-4957-be90-2eb8df89ae38",
+      "name": "Ivan",
+      "password": "$2b$10$PnCnPbY.p7bm7xuADflIbeoVG5wLJR0MrcnYEqKbujeMzZX5J1CK6"
+    },
+    {
+      "id": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "name": "Maria",
+      "password": "$2b$10$gSaAFbW9zB4kaStbQsspYuY6TxQzGtJTnSeY9kHHhQk2V/eUdm.B."
+    },
+    {
+      "id": "90bd32bb-906e-4a91-a5be-3de5f69242cb",
+      "name": "Nostya",
+      "password": "$2b$10$PEn3R2PV7LtyJcFV.FCBd.Aieo0YcR28.K42cBzdh4DVwxcgdHNHi"
+    }
+  ],
   "todos": [
     {
       "id": "1",
-      "text": "Buy tea",
+      "name": "Buy tea",
       "description": "Ut qui veniam commodo ullamco excepteur cillum. Ex aliqua deserunt laboris pariatur tempor culpa consectetur ad reprehenderit consectetur ad Lorem quis. Lorem esse do anim fugiat elit.",
-      "status": "InProgress"
+      "status": "Completed",
+      "estimate": 7200000,
+      "assignee": "bae3236a-cf4b-4957-be90-2eb8df89ae38",
+      "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "labels": [
+        "feature"
+      ],
+      "sprint": "1",
+      "completedSprint": null,
+      "priority": "Medium"
     },
     {
       "id": "2",
-      "text": "Complete quest",
+      "name": "Fix login bug",
       "description": "Ea aute incididunt esse minim adipisicing tempor commodo pariatur reprehenderit deserunt qui labore proident.",
-      "status": "InProgress"
+      "status": "New",
+      "estimate": 14400000,
+      "assignee": "90bd32bb-906e-4a91-a5be-3de5f69242cb",
+      "reporter": "bae3236a-cf4b-4957-be90-2eb8df89ae38",
+      "labels": [
+        "bug"
+      ],
+      "sprint": "2",
+      "completedSprint": null,
+      "priority": "High"
     },
     {
       "id": "3",
-      "text": "Create app",
-      "description": "Proident in fugiat est consectetur incididunt pariatur veniam deserunt proident. Nulla aliqua dolore eiusmod et exercitation ea in exercitation voluptate proident ex ut incididunt. Id pariatur ad veniam amet reprehenderit do officia aute non tempor eiusmod.",
-      "status": "InProgress"
+      "name": "Refactor auth module",
+      "description": "Proident in fugiat est consectetur incididunt pariatur veniam deserunt proident. Nulla aliqua dolore eiusmod et exercitation ea in exercitation voluptate proident ex ut incididunt.",
+      "status": "InProgress",
+      "estimate": 28800000,
+      "assignee": "bae3236a-cf4b-4957-be90-2eb8df89ae38",
+      "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "labels": [
+        "bug",
+        "feature",
+        "refactor"
+      ],
+      "sprint": "",
+      "completedSprint": "1",
+      "priority": "Medium"
     },
     {
       "id": "4",
-      "text": "Get a cookie",
+      "name": "Get a cookie",
       "description": "Ex nostrud ea cillum nostrud.",
-      "status": "Completed"
+      "status": "Completed",
+      "estimate": 1800000,
+      "assignee": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "reporter": "bae3236a-cf4b-4957-be90-2eb8df89ae38",
+      "labels": [
+        "feature"
+      ],
+      "sprint": "2",
+      "completedSprint": "2",
+      "priority": "Low"
+    },
+    {
+      "id": "5",
+      "name": "Performance optimization sdf",
+      "description": "Magna ea reprehenderit aliqua qui anim anim duis.",
+      "status": "InProgress",
+      "estimate": 21600000,
+      "assignee": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "reporter": "bae3236a-cf4b-4957-be90-2eb8df89ae38",
+      "labels": [
+        "refactor"
+      ],
+      "sprint": "1",
+      "completedSprint": null,
+      "priority": "High"
+    },
+    {
+      "id": "6",
+      "name": "Write documentation",
+      "description": "Create API documentation for new endpoints.",
+      "status": "New",
+      "estimate": 14400000,
+      "assignee": "bae3236a-cf4b-4957-be90-2eb8df89ae38",
+      "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "labels": [
+        "feature"
+      ],
+      "sprint": "2",
+      "completedSprint": null,
+      "priority": "Medium"
+    },
+    {
+      "id": "7",
+      "name": "Update dependencies",
+      "description": "Update npm packages to latest versions.",
+      "status": "Completed",
+      "estimate": 7200000,
+      "assignee": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "labels": [
+        "refactor"
+      ],
+      "sprint": null,
+      "completedSprint": null,
+      "priority": "Low"
+    },
+    {
+      "id": "8",
+      "name": "Review PR #43",
+      "description": "Review pull request for new feature.",
+      "status": "InProgress",
+      "estimate": 3600000,
+      "assignee": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "reporter": null,
+      "labels": [],
+      "sprint": null,
+      "completedSprint": null,
+      "priority": "Medium"
+    },
+    {
+      "id": "9",
+      "name": "Fix typo in homepage",
+      "description": "Correct spelling error on main page.",
+      "status": "Completed",
+      "estimate": 900000,
+      "assignee": null,
+      "reporter": "bae3236a-cf4b-4957-be90-2eb8df89ae38",
+      "labels": [
+        "bug"
+      ],
+      "sprint": "1",
+      "completedSprint": "1",
+      "priority": "Low"
+    },
+    {
+      "id": "10",
+      "name": "Setup CI/CD pipeline",
+      "description": "Configure continuous integration workflow.",
+      "status": "New",
+      "estimate": 28800000,
+      "assignee": "bae3236a-cf4b-4957-be90-2eb8df89ae38",
+      "reporter": "bae3236a-cf4b-4957-be90-2eb8df89ae38",
+      "labels": [
+        "feature"
+      ],
+      "sprint": "2",
+      "completedSprint": null,
+      "priority": "High"
+    },
+    {
+      "id": "11",
+      "name": "Organize team meeting",
+      "description": "Schedule and prepare weekly team sync.",
+      "status": "New",
+      "estimate": 1800000,
+      "assignee": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "labels": null,
+      "sprint": "2",
+      "completedSprint": "2",
+      "priority": "Medium"
+    },
+    {
+      "id": "12",
+      "name": "Backup database",
+      "description": "Create weekly database backup.",
+      "status": "Completed",
+      "estimate": 3600000,
+      "assignee": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "labels": null,
+      "sprint": "",
+      "completedSprint": "2",
+      "priority": "Low"
+    },
+    {
+      "id": "13",
+      "name": "Add unit tests",
+      "description": "Write tests for authentication module.",
+      "status": "InProgress",
+      "estimate": 21600000,
+      "assignee": "bae3236a-cf4b-4957-be90-2eb8df89ae38",
+      "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "labels": [
+        "feature"
+      ],
+      "sprint": "1",
+      "completedSprint": null,
+      "priority": "Medium"
+    },
+    {
+      "id": "14",
+      "name": "Update README",
+      "description": "Add new installation instructions.",
+      "status": "New",
+      "estimate": 3600000,
+      "assignee": null,
+      "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "labels": null,
+      "sprint": "2",
+      "completedSprint": null,
+      "priority": "Low"
+    },
+    {
+      "id": "15",
+      "name": "Design dashboard UI",
+      "description": "Create mockups for new dashboard.",
+      "status": "New",
+      "estimate": 36000000,
+      "assignee": "90bd32bb-906e-4a91-a5be-3de5f69242cb",
+      "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
+      "labels": [
+        "feature"
+      ],
+      "sprint": "1",
+      "completedSprint": null,
+      "priority": "High"
     }
   ]
 }

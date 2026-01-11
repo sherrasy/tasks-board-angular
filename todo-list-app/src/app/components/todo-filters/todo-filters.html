@@ -1,0 +1,19 @@
+<div class="todo-filters-container">
+    <button
+    matFab
+      color="warn"
+      class="clear-btn"
+      (click)="clearAll()"
+      [disabled]="!hasActiveFilters()"
+    >
+      <mat-icon>filter_alt_off</mat-icon>
+    </button>
+@for (filter of filterConfigs(); track filter.key) {
+    <app-todo-filter
+      [label]="filter.label"
+      [options]="filter.options"
+      [value]="todosStore.filters()[filter.key]"
+      (valueChange)="onUpdateFilter(filter.key, $event)"
+    />
+  }
+</div>

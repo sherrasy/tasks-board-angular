@@ -4,19 +4,48 @@
     "taskList": "Список задач",
     "taskBoard": "Доска задач",
     "emptyList": "Нет элементов. Введите новую задачу или измените фильтр",
-    "description": "Описание"
+    "description": "Описание",
+    "labels": "Метки",
+    "unassigned": "Не назначен",
+    "cancel": "Отмена"
+  },
+  "todo": {
+    "id": "ID",
+    "status": "Статус",
+    "priority": "Приоритет",
+    "reporter": "Создатель",
+    "assignee": "Исполнитель",
+    "estimate": "Время",
+    "sprint": "Спринт",
+    "completedIn": "Спринт завершения",
+    "notFound": "Задача не найдена."
   },
   "todoForm": {
-    "title": "Добавить новую задачу",
-    "placeholderTitle": "Заголовок задачи",
-    "placeholderDescription": "Описание задачи",
+    "addTitle": "Добавить новую задачу",
+    "editTitle": "Редактировать задачу",
+    "labelTitle": "Заголовок",
+    "labelPriority": "Приоритет",
+    "labelEstimate": "Оценка (в часах)",
+    "labelLabels": "Метки",
+    "labelAssignee": "Исполнитель",
+    "labelSprint": "Спринт",
+    "labelDescription": "Описание",
+    "placeholderTitle": "Введите заголовок задачи",
+    "placeholderDescription": "Опишите, что именно нужно сделать...",
     "addButton": "Добавить задачу"
   },
   "filters": {
-    "title": "Статус",
     "all": "Все",
-    "inProgress": "В процессе",
-    "completed": "Завершено"
+    "none": "Не указан",
+    "inprogress": "В процессе",
+    "completed": "Завершено",
+    "new": "Новое",
+    "low": "Низкий",
+    "medium": "Средний",
+    "high": "Высокий",
+    "bug": "Баг",
+    "feature": "Функционал",
+    "refactor": "Рефакторинг"
   },
   "todoItem": {
     "deleteButton": "Удалить",
@@ -34,12 +63,35 @@
     "deleteTodoSuccess": "Задача была удалена.",
     "updateTodoSuccess": "Задача была обновлена.",
     "failedToManageTodo": "Не удалось получить задачу.",
-    "failedToFetchTodos": "Не удалось получить список задач."
+    "failedToFetchTodos": "Не удалось получить список задач.",
+    "userCreated": "Пользователь успешно добавлен.",
+    "failedToCreateUser": "Не удалось получить пользователя.",
+    "failedToLoadUsers": "Не удалось получить список пользователей."
   },
   "tooltips": {
-    "showDescription": "Показать описание. Двойной клик откроет редактор.",
+    "showDescription": "Показать описание и кнопку редактирования",
     "saveTodo": "Сохранить задачу",
     "removeTodo": "Удалить задачу",
     "saveTitle": "Сохранить новый заголовок"
+  },
+  "auth": {
+    "loginTitle": "Вход в систему",
+    "registerTitle": "Регистрация",
+    "selectUser": "Выберите пользователя",
+    "placeholderPassword": "Пароль (12345)",
+    "placeholderName": "Имя нового пользователя",
+    "loginButton": "Войти",
+    "registerButton": "Зарегистрировать",
+    "noAccount": "Нет в списке? Создать нового",
+    "backToLogin": "Вернуться к выбору"
+  },
+  "stats": {
+    "title": "Моя статистика",
+    "total": "Все задачи",
+    "totalDone": "Задач выполнено",
+    "totalTime": "Времени затрачено",
+    "bySprints": "Разделение по спринтам",
+    "count": "Выполнено",
+    "bestSprints": "Лучшие спринты по выполнению"
   }
 }

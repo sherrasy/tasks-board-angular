@@ -1,0 +1,17 @@
+.todo-filters {
+  &-container {
+    display: flex;
+    gap: 8px 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    .clear-btn {
+      transform: scale(0.8);
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      & > .mat-icon {
+        margin-right: 0;
+      }
+    }
+  }
+}

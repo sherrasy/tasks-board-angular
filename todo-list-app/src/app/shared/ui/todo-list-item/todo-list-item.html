@@ -12,7 +12,8 @@
     (change)="onCheckboxChange($event)"
     (click)="$event.stopPropagation()"
   />
-  <ng-container [ngTemplateOutlet]="isEditing() ? editTemplate : viewTemplate"></ng-container>
+  <ng-container [ngTemplateOutlet]="viewTemplate"></ng-container>
+  <div class="custom-drag-placeholder" *cdkDragPlaceholder></div>
 </li>
 }
 
@@ -22,8 +23,7 @@
     class="todo-text"
     appShowTooltip
     [tooltipText]="TOOLTIP_TEXT.LIST_ITEM | transloco"
-    (dblclick)="handleOpenEditing($event)"
-    >{{ currentTodo().text }}</span
+    >{{ currentTodo().name }}</span
   >
   <app-button
     type="delete"
@@ -35,19 +35,19 @@
 </ng-template>
 
 <!-- Шаблон для редактирования todo-->
-<ng-template #editTemplate>
+<!-- <ng-template #editTemplate>
   <form [formGroup]="editTodoForm" (ngSubmit)="handleUpdateTodo($event)" class="todo-item-form">
     <mat-form-field class="form-input-wrapper" subscriptSizing="dynamic">
       <input
         #editInput
-        type="text"
+        type="name"
         matInput
         [placeholder]="'todoItem.editPlaceholder' | transloco"
-        formControlName="text"
+        formControlName="name"
         (keydown)="handleKeydownPress($event)"
       />
-      @if (errorService.showErrorMessage(editTodoForm.controls.text)) {
-      <mat-error>{{ errorService.getErrorMessage(editTodoForm.controls.text, 'Title') }}</mat-error>
+      @if (errorService.showErrorMessage(editTodoForm.controls.name)) {
+      <mat-error>{{ errorService.getErrorMessage(editTodoForm.controls.name, 'Title') }}</mat-error>
       }
     </mat-form-field>
 
@@ -61,4 +61,4 @@
       {{ 'todoItem.saveButton' | transloco }}</app-button
     >
   </form>
-</ng-template>
+</ng-template> -->
