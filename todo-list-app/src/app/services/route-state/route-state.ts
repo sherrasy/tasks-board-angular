@@ -14,26 +14,26 @@ export class RouteStateService {
     destroyRef: DestroyRef,
     onIdChange: (id: string | null) => void,
     cleanupRoutes: string[] = [],
+    onCleanup?: () => void
   ): void {
     this.activatedRoute.firstChild?.paramMap
       .pipe(
         takeUntilDestroyed(destroyRef),
-        map((params) => params.get('id')),
+        map((params) => params.get('id'))
       )
       .subscribe((id) => onIdChange(id));
 
-    this.router.events
-      .pipe(takeUntilDestroyed(destroyRef))
-      .subscribe(() => {
-        const currentUrl = this.router.url;
-        const shouldCleanup = cleanupRoutes.some(route =>
-          !currentUrl.includes(route),
-        );
+    this.router.events.pipe(takeUntilDestroyed(destroyRef)).subscribe(() => {
+      const currentUrl = this.router.url;
+      const shouldCleanup = cleanupRoutes.some((route) => !currentUrl.includes(route));
 
-        if (shouldCleanup) {
-          onIdChange(null);
-        }
-      });
+      if (shouldCleanup) {
+        onIdChange(null);
+      }
+      if (onCleanup) {
+        onCleanup();
+      }
+    });
   }
 
   public navigateWithId(baseRoute: string, id: string | null): void {
