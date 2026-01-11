@@ -188,9 +188,7 @@
       "estimate": 3600000,
       "assignee": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
       "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
-      "labels": [
-        "maintenance"
-      ],
+      "labels": null,
       "sprint": "",
       "completedSprint": "2",
       "priority": "Low"
@@ -237,19 +235,6 @@
       "sprint": "1",
       "completedSprint": null,
       "priority": "High"
-    },
-    {
-      "name": "sdf",
-      "description": "sdf",
-      "priority": "Medium",
-      "sprint": "",
-      "assignee": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
-      "estimate": 3600000,
-      "labels": [],
-      "id": "f0f1",
-      "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
-      "status": "New",
-      "completedSprint": null
     }
   ]
 }
