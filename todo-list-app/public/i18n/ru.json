@@ -7,7 +7,8 @@
     "description": "Описание",
     "labels": "Метки",
     "unassigned": "Не назначен",
-    "cancel": "Отмена"
+    "cancel": "Отмена",
+    "search":"Поиск по названию"
   },
   "todo": {
     "id": "ID",

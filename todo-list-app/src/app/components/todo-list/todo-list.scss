@@ -1,7 +1,9 @@
+@use '@angular/material' as mat;
+
 .todos-content {
   width: calc(100vw - 360px);
   height: 100%;
-  max-height: calc(100vh - 90px);
+  max-height: calc(100vh - 160px);
   padding-bottom: 12px;
   gap: 40px;
   display: flex;
@@ -70,11 +72,34 @@
 
 .header {
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: start;
   gap: 20px;
+  margin-bottom: 16px;
+
+  .title-section {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex: 1;
+  }
 
   .headline {
-    line-height: 1.2;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .search-field {
+    width: 100%;
+    max-width: 400px;
+
+    font-size: 12px;
+    @include mat.form-field-overrides(
+      (
+        container-vertical-padding: 8px,
+        container-height: 40px,
+      )
+    );
   }
 }
 
@@ -83,7 +108,7 @@
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  max-height: calc(100vh - 140px);
+  max-height: calc(100vh - 220px);
   overflow-y: auto;
 }
 

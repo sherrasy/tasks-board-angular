@@ -7,7 +7,8 @@
     "description": "Description",
     "labels": "Labels",
     "unassigned": "Unassigned",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "search":"Search by name"
   },
   "todo": {
     "id": "ID",

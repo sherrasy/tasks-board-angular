@@ -2,7 +2,26 @@
 <div class="backdrop" (click)="todosStore.setSelectedItemId(null)"></div>
 }
 <div class="header">
-  <h1 class="headline">{{ 'common.taskList' | transloco }}</h1>
+  <div class="title-section">
+    <h1 class="headline">{{ 'common.taskList' | transloco }}</h1>
+
+    <mat-form-field appearance="outline" class="search-field" subscriptSizing="dynamic">
+      <mat-icon matPrefix>search</mat-icon>
+      <mat-label>{{ 'common.search' | transloco }}</mat-label>
+      <input
+        matInput
+        type="text"
+        [value]="todosStore.searchQuery()"
+        (input)="onSearch($event)"
+      />
+      @if (todosStore.searchQuery()) {
+        <button matSuffix mat-icon-button aria-label="Clear" (click)="todosStore.setSearchQuery('')">
+          <mat-icon>close</mat-icon>
+        </button>
+      }
+    </mat-form-field>
+  </div>
+
   <app-todo-filters />
 </div>
 <div class="todos-content">
@@ -22,9 +41,10 @@
     }
   </section>
 
+
+</div>
   @if (showDetailsContainer()) {
   <section class="container drawer" animate.enter="slide-in-class" animate.leave="slide-out-class">
     <router-outlet />
   </section>
   }
-</div>
