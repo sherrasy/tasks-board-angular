@@ -28,13 +28,34 @@
   width: 500px;
   height: 100%;
   z-index: 10;
-  box-shadow: -5px 0px 15px #00000022;
-  transition: transform 0.3s ease-in-out;
   background-color: white;
-  &.hidden {
-    display: block !important;
-    transform: translateX(110%);
+  box-shadow: -5px 0px 15px #00000022;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
   }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.slide-in-class {
+  animation: slide-in 0.3s ease-in-out forwards;
+}
+
+.slide-out-class {
+  animation: slide-out 0.3s ease-in-out forwards;
 }
 
 .backdrop {

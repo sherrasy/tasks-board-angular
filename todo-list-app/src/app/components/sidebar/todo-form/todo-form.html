@@ -20,8 +20,8 @@
       <mat-form-field>
         <mat-label>{{ 'todoForm.labelPriority' | transloco }}</mat-label>
         <mat-select formControlName="priority">
-          @for (p of priorities; track p) {
-          <mat-option [value]="p">{{ p }}</mat-option>
+          @for (priority of priorities; track priority) {
+          <mat-option [value]="priority">{{ `filters.${priority.toLowerCase()}` | transloco }}</mat-option>
           }
         </mat-select>
       </mat-form-field>
@@ -40,7 +40,7 @@
         <mat-label>{{ 'todoForm.labelLabels' | transloco }}</mat-label>
         <mat-select formControlName="labels" multiple>
           @for (label of availableLabels; track label) {
-          <mat-option [value]="label">{{ label }}</mat-option>
+          <mat-option [value]="label">{{ `filters.${label}` |transloco}}</mat-option>
           }
         </mat-select>
       </mat-form-field>

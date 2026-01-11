@@ -113,7 +113,7 @@
       "id": "7",
       "name": "Update dependencies",
       "description": "Update npm packages to latest versions.",
-      "status": "New",
+      "status": "Completed",
       "estimate": 7200000,
       "assignee": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
       "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
@@ -229,7 +229,7 @@
       "description": "Create mockups for new dashboard.",
       "status": "New",
       "estimate": 36000000,
-      "assignee": null,
+      "assignee": "90bd32bb-906e-4a91-a5be-3de5f69242cb",
       "reporter": "9c8ca3d3-fe2e-4046-9952-6d783efc71b6",
       "labels": [
         "feature"

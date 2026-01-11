@@ -20,7 +20,7 @@
     "completedIn": "Completed Sprint",
     "notFound": "Todo item not found."
   },
-"todoForm": {
+  "todoForm": {
     "addTitle": "Add new todo",
     "editTitle": "Edit todo",
     "labelTitle": "Title",
@@ -36,9 +36,16 @@
   },
   "filters": {
     "all": "All",
-    "inProgress": "In progress",
+    "none": "NONE",
+    "inprogress": "In progress",
     "completed": "Completed",
-    "new": "New"
+    "new": "New",
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "bug": "Bug",
+    "feature": "Feature",
+    "refactor": "Refactor"
   },
   "todoItem": {
     "deleteButton": "Delete",
@@ -62,12 +69,12 @@
     "failedToLoadUsers": "Failed to fetch users."
   },
   "tooltips": {
-    "showDescription": "Show description. Double click opens editor.",
+    "showDescription": "Show description and editor",
     "saveTodo": "Save todo",
     "removeTodo": "Remove todo",
     "saveTitle": "Save new title"
   },
-    "auth": {
+  "auth": {
     "loginTitle": "Sign In",
     "registerTitle": "Registration",
     "selectUser": "Select user",
@@ -79,22 +86,12 @@
     "backToLogin": "Back to user selection"
   },
   "stats": {
-  "title": "My Statistics",
-  "total": "All tasks",
-  "totalDone": "Tasks completed",
-  "totalTime": "Time consumed",
-  "bySprints": "Breakdown by sprints",
-  "count": "Done",
+    "title": "My Statistics",
+    "total": "All tasks",
+    "totalDone": "Tasks completed",
+    "totalTime": "Time consumed",
+    "bySprints": "Breakdown by sprints",
+    "count": "Done",
     "bestSprints": "Best sprints by completion"
-
-},
-  "New": "New",
-  "InProgress": "In Progress",
-  "Completed": "Completed",
-  "Low": "Low",
-  "Medium": "Medium",
-  "High": "High",
-  "bug": "Bug",
-  "feature": "Feature",
-  "refactor": "Refactor"
+  }
 }

@@ -8,7 +8,7 @@ import { DEFAULT_TODO_FILTER, UNASSIGNED_VALUE } from './consts';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-// TODO: добавить переводы label
+// TODO: добавить поиск по названию туду
 @Component({
   selector: 'app-todo-filters',
   imports: [TodoFilter, MatButtonModule, MatIconModule],
@@ -22,12 +22,12 @@ export class TodoFilters {
   protected readonly filterConfigs = computed<IFilterConfig[]>(() => {
     const allUsers = this.authStore.users().map((u) => ({ label: u.name, value: u.id }));
     const assigneeOptions: TFilterOption[] = [
-      { label: 'ALL', value: 'ALL' },
-      { label: UNASSIGNED_VALUE, value: UNASSIGNED_VALUE },
+      { label: 'filters.all', value: 'ALL' },
+      { label: 'filters.none', value: UNASSIGNED_VALUE },
       ...allUsers,
     ];
 
-    const reporterOptions: TFilterOption[] = [{ label: 'ALL', value: 'ALL' }, ...allUsers];
+    const reporterOptions: TFilterOption[] = [{ label: 'filters.all', value: 'ALL' }, ...allUsers];
 
     const uniqueSprints = [
       ...new Set(
@@ -39,8 +39,8 @@ export class TodoFilters {
     ].sort();
 
     const sprintOptions: TFilterOption[] = [
-      { label: 'ALL', value: 'ALL' },
-      { label: UNASSIGNED_VALUE, value: UNASSIGNED_VALUE },
+      { label: 'filters.all', value: 'ALL' },
+      { label: 'filters.none', value: UNASSIGNED_VALUE },
       ...uniqueSprints.map((s) => ({ label: s, value: s })),
     ];
 

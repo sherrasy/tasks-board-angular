@@ -4,21 +4,23 @@
     <header class="todo-header">
       <span class="todo-id">#{{ todo.id }}</span>
       <h2>{{ todo.name }}</h2>
-      <app-button type="simple" class="active" (click)="onEdit()" ><mat-icon>edit</mat-icon></app-button>
+      <app-button type="simple" (click)="onEdit()">
+        <mat-icon>edit</mat-icon>
+      </app-button>
     </header>
 
     <div class="metadata-grid">
       <div class="meta-item">
         <span class="meta-label">{{ 'todo.status' | transloco }}</span>
         <span class="meta-value status-badge" [attr.data-status]="todo.status">
-          {{ todo.status | transloco }}
+          {{ `filters.${todo.status.toLowerCase()}`  | transloco }}
         </span>
       </div>
 
       <div class="meta-item">
         <span class="meta-label">{{ 'todo.priority' | transloco }}</span>
         <span class="meta-value priority-text" [attr.data-priority]="todo.priority">
-          {{ todo.priority | transloco }}
+          {{`filters.${todo.priority.toLowerCase()}` | transloco }}
         </span>
       </div>
 
@@ -39,9 +41,7 @@
         <span class="meta-label">{{ 'todo.estimate' | transloco }}</span>
         <span class="meta-value">{{ formattedEstimate() }}</span>
       </div>
-      }
-
-      @if(todo.sprint !== null) {
+      } @if(todo.sprint !== null) {
       <div class="meta-item">
         <span class="meta-label">{{ 'todo.sprint' | transloco }}</span>
         <span class="meta-value">{{ todo.sprint }}</span>
@@ -49,18 +49,16 @@
       }
     </div>
 
-    @if(todo.labels.length > 0) {
+    @if(todo.labels&&todo.labels.length > 0) {
     <section class="section">
       <h3>{{ 'common.labels' | transloco }}</h3>
       <div class="labels-container">
         @for(label of todo.labels; track label) {
-        <span [className]="`chip chip-${label}`">{{ label | transloco }}</span>
+        <span [className]="`chip chip-${label}`">{{ `filters.${label}` | transloco }}</span>
         }
       </div>
     </section>
-    }
-
-    @if(todo.description) {
+    } @if(todo.description) {
     <section class="section">
       <h3>{{ 'common.description' | transloco }}</h3>
       <div class="description-box">

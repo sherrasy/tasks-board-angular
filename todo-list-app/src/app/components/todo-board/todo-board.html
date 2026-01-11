@@ -1,5 +1,5 @@
 @if (showDetailsContainer()) {
-  <div class="backdrop" (click)="todosStore.setSelectedItemId(null)"></div>
+<div class="backdrop" (click)="todosStore.setSelectedItemId(null)"></div>
 }
 <div class="header">
   <h1 class="headline">{{ 'common.taskBoard' | transloco }}</h1>
@@ -9,60 +9,69 @@
 <div class="todos-content">
   <section class="container board-container">
     @if (todosStore.isLoading()) {
-      <app-loader />
+    <app-loader />
     } @else {
-      <div class="todos-section">
-
-        <div class="todos-column">
-          <h2>{{ 'filters.new' | transloco }}</h2>
-          <ul class="todos-list"
-              cdkDropList id="newTodos"
-              [cdkDropListData]="todosStore.newTodos()"
-              [cdkDropListConnectedTo]="['incompleteTodos', 'completedTodos']"
-              (cdkDropListDropped)="drop($event)">
-            @for (todo of todosStore.newTodos(); track todo.id) {
-              <app-todo-list-item [currentTodo]="todo" cdkDrag [cdkDragData]="todo" />
-            } @empty {
-              <li>{{ 'common.emptyList' | transloco }}</li>
-            }
-          </ul>
-        </div>
-
-        <div class="todos-column">
-          <h2>{{ 'filters.inProgress' | transloco }}</h2>
-          <ul class="todos-list"
-              cdkDropList id="incompleteTodos"
-              [cdkDropListData]="todosStore.incompleteTodos()"
-              [cdkDropListConnectedTo]="['newTodos', 'completedTodos']"
-              (cdkDropListDropped)="drop($event)">
-            @for (todo of todosStore.incompleteTodos(); track todo.id) {
-              <app-todo-list-item [currentTodo]="todo" cdkDrag [cdkDragData]="todo" />
-            } @empty {
-              <li>{{ 'common.emptyList' | transloco }}</li>
-            }
-          </ul>
-        </div>
-
-        <div class="todos-column">
-          <h2>{{ 'filters.completed' | transloco }}</h2>
-          <ul class="todos-list"
-              cdkDropList id="completedTodos"
-              [cdkDropListData]="todosStore.completedTodos()"
-              [cdkDropListConnectedTo]="['newTodos', 'incompleteTodos']"
-              (cdkDropListDropped)="drop($event)">
-            @for (todo of todosStore.completedTodos(); track todo.id) {
-              <app-todo-list-item [currentTodo]="todo" cdkDrag [cdkDragData]="todo" />
-            } @empty {
-              <li>{{ 'common.emptyList' | transloco }}</li>
-            }
-          </ul>
-        </div>
-
+    <div class="todos-section">
+      <div class="todos-column">
+        <h2>{{ 'filters.new' | transloco }}</h2>
+        <ul
+          class="todos-list"
+          cdkDropList
+          id="newTodos"
+          [cdkDropListData]="todosStore.newTodos()"
+          [cdkDropListConnectedTo]="['incompleteTodos', 'completedTodos']"
+          (cdkDropListDropped)="drop($event)"
+        >
+          @for (todo of todosStore.newTodos(); track todo.id) {
+          <app-todo-list-item [currentTodo]="todo" cdkDrag [cdkDragData]="todo" />
+          } @empty {
+          <li>{{ 'common.emptyList' | transloco }}</li>
+          }
+        </ul>
       </div>
+
+      <div class="todos-column">
+        <h2>{{ 'filters.inprogress' | transloco }}</h2>
+        <ul
+          class="todos-list"
+          cdkDropList
+          id="incompleteTodos"
+          [cdkDropListData]="todosStore.incompleteTodos()"
+          [cdkDropListConnectedTo]="['newTodos', 'completedTodos']"
+          (cdkDropListDropped)="drop($event)"
+        >
+          @for (todo of todosStore.incompleteTodos(); track todo.id) {
+          <app-todo-list-item [currentTodo]="todo" cdkDrag [cdkDragData]="todo" />
+          } @empty {
+          <li>{{ 'common.emptyList' | transloco }}</li>
+          }
+        </ul>
+      </div>
+
+      <div class="todos-column">
+        <h2>{{ 'filters.completed' | transloco }}</h2>
+        <ul
+          class="todos-list"
+          cdkDropList
+          id="completedTodos"
+          [cdkDropListData]="todosStore.completedTodos()"
+          [cdkDropListConnectedTo]="['newTodos', 'incompleteTodos']"
+          (cdkDropListDropped)="drop($event)"
+        >
+          @for (todo of todosStore.completedTodos(); track todo.id) {
+          <app-todo-list-item [currentTodo]="todo" cdkDrag [cdkDragData]="todo" />
+          } @empty {
+          <li>{{ 'common.emptyList' | transloco }}</li>
+          }
+        </ul>
+      </div>
+    </div>
     }
   </section>
 
-  <section class="container drawer" [class.hidden]="!showDetailsContainer()">
+  @if (showDetailsContainer()) {
+  <section class="container drawer" animate.enter="slide-in-class" animate.leave="slide-out-class">
     <router-outlet />
   </section>
+  }
 </div>

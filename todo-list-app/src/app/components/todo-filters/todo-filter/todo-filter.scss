@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 
 .filter-container {
-  width: 120px;
+  width: 140px;
   font-size: 12px;
   @include mat.form-field-overrides(
     (
@@ -9,4 +9,14 @@
       container-height: 40px,
     )
   );
+}
+
+.filter-option {
+  max-width: 180px;
+  .label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;
+  }
 }

@@ -75,7 +75,7 @@ export class TodoForm {
     ],
     labels: [this.data?.todo?.labels ?? ([] as TTaskLabel[])],
     sprint: [this.data?.todo?.sprint ?? '', [Validators.maxLength(50)]],
-    assignee: [this.data?.todo?.assignee ?? this.authStore.currentUserId()],
+    assignee: [this.data?.todo?.assignee ?? null],
   });
 
   protected onSubmit(e: Event): void {

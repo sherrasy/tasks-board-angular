@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input, output, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 
 type TAppButton = 'submit' | 'delete' | 'simple';
 
@@ -14,16 +14,17 @@ export class Button {
   public isDisabled = input<boolean>(false);
 
   public action = output<Event>();
-
-  public buttonClass: Signal<string> = computed(() =>
-    this.type() === 'submit'
-      ? 'add-button'
-      : this.type() === 'simple'
-      ? 'simple-button'
-      : 'delete-button'
-  );
+  public buttonClass = computed(() => {
+    const mapping: Record<string, string> = {
+      submit: 'add-button',
+      delete: 'delete-button',
+      simple: 'simple-button',
+    };
+    return mapping[this.type()];
+  });
 
   public handleClick(event: Event) {
+    console.log(this.type(), this.action, this.buttonClass());
     if (this.isDisabled()) return;
     this.action.emit(event);
   }

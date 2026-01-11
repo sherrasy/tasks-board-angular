@@ -11,6 +11,8 @@ import { AuthStore } from '../../../store/auth-store';
 import { TodosStore } from '../../../store/todos-store';
 import { TodoForm } from '../../sidebar/todo-form/todo-form';
 
+// TODO: добавить форму и блок коментариев
+
 @Component({
   selector: 'app-todo-details',
   imports: [TranslocoModule, Button, MatIcon],

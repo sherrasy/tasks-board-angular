@@ -12,7 +12,7 @@
     (change)="onCheckboxChange($event)"
     (click)="$event.stopPropagation()"
   />
-  <ng-container [ngTemplateOutlet]="isEditing() ? editTemplate : viewTemplate"></ng-container>
+  <ng-container [ngTemplateOutlet]="viewTemplate"></ng-container>
   <div class="custom-drag-placeholder" *cdkDragPlaceholder></div>
 </li>
 }
@@ -23,7 +23,6 @@
     class="todo-text"
     appShowTooltip
     [tooltipText]="TOOLTIP_TEXT.LIST_ITEM | transloco"
-    (dblclick)="handleOpenEditing($event)"
     >{{ currentTodo().name }}</span
   >
   <app-button
@@ -36,7 +35,7 @@
 </ng-template>
 
 <!-- Шаблон для редактирования todo-->
-<ng-template #editTemplate>
+<!-- <ng-template #editTemplate>
   <form [formGroup]="editTodoForm" (ngSubmit)="handleUpdateTodo($event)" class="todo-item-form">
     <mat-form-field class="form-input-wrapper" subscriptSizing="dynamic">
       <input
@@ -62,4 +61,4 @@
       {{ 'todoItem.saveButton' | transloco }}</app-button
     >
   </form>
-</ng-template>
+</ng-template> -->
