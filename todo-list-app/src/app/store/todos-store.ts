@@ -25,6 +25,7 @@ interface TodosState {
   selectedItemId: string | null;
   editingItemId: string | null;
   filters: TTodoFilter;
+  searchQuery: string;
 }
 
 const initialState: TodosState = {
@@ -33,28 +34,32 @@ const initialState: TodosState = {
   selectedItemId: null,
   editingItemId: null,
   filters: DEFAULT_TODO_FILTER,
+  searchQuery: '',
 };
 
 export const TodosStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
   withComputed(
-    ({ todos, selectedItemId, editingItemId, filters }, authStore = inject(AuthStore)) => {
+    (
+      { todos, selectedItemId, editingItemId, filters, searchQuery },
+      authStore = inject(AuthStore)
+    ) => {
       const filteredTodos = computed(() => {
+        const query = searchQuery().toLowerCase();
         const currentFilters = filters();
+
         return todos().filter((todo) => {
-          return Object.entries(currentFilters).every(([key, value]) => {
+          const matchesSearch = !query || todo.name.toLowerCase().includes(query);
+
+          const matchesFilters = Object.entries(currentFilters).every(([key, value]) => {
             if (value === 'ALL' || value === null) return true;
             const todoValue = todo[key as keyof ITodoItem];
-            console.log(todo, key);
-            if (value === UNASSIGNED_VALUE) {
-              return todoValue === null || todoValue === undefined || todoValue === '';
-            }
-            if (Array.isArray(todoValue)) {
-              return todoValue.includes(value as any);
-            }
+            if (value === UNASSIGNED_VALUE) return !todoValue;
             return todoValue === value;
           });
+
+          return matchesSearch && matchesFilters;
         });
       });
 
@@ -119,6 +124,7 @@ export const TodosStore = signalStore(
     return {
       setSelectedItemId: (selectedItemId: string | null) => patchState(store, { selectedItemId }),
       setEditingItemId: (editingItemId: string | null) => patchState(store, { editingItemId }),
+      setSearchQuery: (searchQuery: string) => patchState(store, { searchQuery }),
       patchFilters: (partialFilter: Partial<TTodoFilter>) => {
         patchState(store, (state) => ({
           filters: { ...state.filters, ...partialFilter },

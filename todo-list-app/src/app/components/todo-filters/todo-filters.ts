@@ -8,7 +8,6 @@ import { DEFAULT_TODO_FILTER, UNASSIGNED_VALUE } from './consts';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-// TODO: добавить поиск по названию туду
 @Component({
   selector: 'app-todo-filters',
   imports: [TodoFilter, MatButtonModule, MatIconModule],

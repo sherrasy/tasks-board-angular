@@ -14,10 +14,26 @@ import { APP_ROUTES } from '../../shared/util/constants';
 import { TodosStore } from '../../store/todos-store';
 import { TranslocoModule } from '@jsverse/transloco';
 import { TodoFilters } from '../todo-filters/todo-filters';
-
+import { MatIcon } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-todo-list',
-  imports: [TodoListItem, Loader, TodoFilters, RouterOutlet, TranslocoModule, TodoFilters],
+  imports: [
+    TodoListItem,
+    Loader,
+    TodoFilters,
+    RouterOutlet,
+    TranslocoModule,
+    TodoFilters,
+    MatIcon,
+    MatInputModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
   templateUrl: './todo-list.html',
   styleUrl: './todo-list.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -39,5 +55,10 @@ export class TodoList {
       const selectedId = this.todosStore.selectedItemId();
       this.routeState.navigateWithId(APP_ROUTES.TASKS, selectedId);
     });
+  }
+
+  onSearch(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    this.todosStore.setSearchQuery(value);
   }
 }
