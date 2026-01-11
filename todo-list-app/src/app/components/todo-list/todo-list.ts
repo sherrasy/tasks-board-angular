@@ -48,7 +48,11 @@ export class TodoList {
     this.routeState.setupRouteListener(
       inject(DestroyRef),
       (id) => this.todosStore.setSelectedItemId(id),
-      [APP_ROUTES.TASKS]
+      [APP_ROUTES.TASKS],
+      () => {
+        this.todosStore.resetFilters();
+        this.todosStore.setSearchQuery('');
+      }
     );
 
     effect(() => {
