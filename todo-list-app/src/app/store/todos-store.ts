@@ -13,7 +13,7 @@ import {
 import { of, pipe } from 'rxjs';
 import { TodosApiService } from '../services/todos-api/todos-api';
 import { AddTodoDto, EditTodoDto } from '../shared/types/dto/todo.dto';
-import { ITodoItem } from '../shared/types/todo-item.interface';
+import { ITodoItem, TTaskLabel } from '../shared/types/todo-item.interface';
 import { TTodoFilter } from '../shared/types/filters.interface';
 import { DEFAULT_TODO_FILTER, UNASSIGNED_VALUE } from '../components/todo-filters/consts';
 import { AuthStore } from './auth-store';
@@ -43,7 +43,7 @@ export const TodosStore = signalStore(
   withComputed(
     (
       { todos, selectedItemId, editingItemId, filters, searchQuery },
-      authStore = inject(AuthStore)
+      authStore = inject(AuthStore),
     ) => {
       const filteredTodos = computed(() => {
         const query = searchQuery().toLowerCase();
@@ -56,6 +56,9 @@ export const TodosStore = signalStore(
             if (value === 'ALL' || value === null) return true;
             const todoValue = todo[key as keyof ITodoItem];
             if (value === UNASSIGNED_VALUE) return !todoValue;
+            if (key === 'labels' && Array.isArray(todoValue)) {
+              return todoValue.includes(value as TTaskLabel);
+            }
             return todoValue === value;
           });
 
@@ -64,16 +67,16 @@ export const TodosStore = signalStore(
       });
 
       const currentUserTodos = computed(() =>
-        todos().filter((todo) => todo.assignee === authStore.currentUserId())
+        todos().filter((todo) => todo.assignee === authStore.currentUserId()),
       );
 
       return {
         filteredTodos,
         completedTodos: computed(() =>
-          filteredTodos().filter((todo) => todo.status === 'Completed')
+          filteredTodos().filter((todo) => todo.status === 'Completed'),
         ),
         incompleteTodos: computed(() =>
-          filteredTodos().filter((todo) => todo.status === 'InProgress')
+          filteredTodos().filter((todo) => todo.status === 'InProgress'),
         ),
         newTodos: computed(() => filteredTodos().filter((todo) => todo.status === 'New')),
         selectedTodo: computed(() => {
@@ -90,22 +93,28 @@ export const TodosStore = signalStore(
 
           const totalTime = completed.reduce((acc, t) => acc + (Number(t.estimate) || 0), 0);
 
-          const bySprints = allUserTodos.reduce((acc, t) => {
-            const sprintName = t.sprint || 'No Sprint';
+          const bySprints = allUserTodos.reduce(
+            (acc, t) => {
+              const sprintName = t.sprint || 'No Sprint';
 
-            if (!acc[sprintName]) {
-              acc[sprintName] = { name: sprintName, total: 0, completedCount: 0, time: 0 };
-            }
+              if (!acc[sprintName]) {
+                acc[sprintName] = { name: sprintName, total: 0, completedCount: 0, time: 0 };
+              }
 
-            acc[sprintName].total++;
+              acc[sprintName].total++;
 
-            if (t.status === 'Completed') {
-              acc[sprintName].completedCount++;
-              acc[sprintName].time += Number(t.estimate) || 0;
-            }
+              if (t.status === 'Completed') {
+                acc[sprintName].completedCount++;
+                acc[sprintName].time += Number(t.estimate) || 0;
+              }
 
-            return acc;
-          }, {} as Record<string, { name: string; total: number; completedCount: number; time: number }>);
+              return acc;
+            },
+            {} as Record<
+              string,
+              { name: string; total: number; completedCount: number; time: number }
+            >,
+          );
 
           return {
             totalTasks: allUserTodos.length,
@@ -118,7 +127,7 @@ export const TodosStore = signalStore(
           };
         }),
       };
-    }
+    },
   ),
   withMethods((store, todosApiService = inject(TodosApiService)) => {
     return {
@@ -143,10 +152,10 @@ export const TodosStore = signalStore(
               catchError(() => {
                 patchState(store, { isLoading: false });
                 return of([]);
-              })
-            )
-          )
-        )
+              }),
+            ),
+          ),
+        ),
       ),
       addNewTodo: rxMethod<AddTodoDto>(
         pipe(
@@ -167,10 +176,10 @@ export const TodosStore = signalStore(
               catchError(() => {
                 patchState(store, { isLoading: false });
                 return of(null);
-              })
+              }),
             );
-          })
-        )
+          }),
+        ),
       ),
       updateTodo: rxMethod<EditTodoDto>(
         pipe(
@@ -181,7 +190,7 @@ export const TodosStore = signalStore(
                 if (updatedTodo) {
                   patchState(store, (state) => ({
                     todos: state.todos.map((todo) =>
-                      todo.id === updatedTodo.id ? updatedTodo : todo
+                      todo.id === updatedTodo.id ? updatedTodo : todo,
                     ),
                     editingItemId: null,
                     isLoading: false,
@@ -193,10 +202,10 @@ export const TodosStore = signalStore(
               catchError(() => {
                 patchState(store, { isLoading: false });
                 return of(null);
-              })
+              }),
             );
-          })
-        )
+          }),
+        ),
       ),
       deleteTodoById: rxMethod<string>(
         pipe(
@@ -211,10 +220,10 @@ export const TodosStore = signalStore(
               catchError(() => {
                 patchState(store, { todos: store.todos() });
                 return of(null);
-              })
+              }),
             );
-          })
-        )
+          }),
+        ),
       ),
     };
   }),
@@ -222,5 +231,5 @@ export const TodosStore = signalStore(
     onInit(store) {
       store.loadTodos();
     },
-  })
+  }),
 );

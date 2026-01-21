@@ -33,7 +33,7 @@ export class TodoFilters {
         this.todosStore
           .todos()
           .map((t) => t.sprint)
-          .filter((s): s is string => !!s)
+          .filter((s): s is string => !!s),
       ),
     ].sort();
 
@@ -50,12 +50,11 @@ export class TodoFilters {
       { key: 'sprint', label: 'todo.sprint', options: sprintOptions },
     ];
   });
-
   protected hasActiveFilters = computed(() => {
     const current = this.todosStore.filters();
     const defaults = DEFAULT_TODO_FILTER;
     return (Object.keys(current) as Array<keyof TTodoFilter>).some(
-      (key) => current[key] !== defaults[key]
+      (key) => current[key] !== defaults[key],
     );
   });
 
