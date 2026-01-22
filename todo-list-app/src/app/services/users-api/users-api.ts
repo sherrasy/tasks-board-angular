@@ -41,7 +41,7 @@ export class UsersApiService {
   public createUser(user: IUser): Observable<IUser | null> {
     return this.http.post<IUser>(this.baseUrl, user).pipe(
       tap(() => this.handleSuccess(TOAST_TEXT.REGISTER_SUCCESS)),
-      catchError(this.handleError<IUser | null>(TOAST_TEXT.ERROR_CREATE, null))
+      catchError(this.handleError<IUser | null>(TOAST_TEXT.ERROR_CREATE, null)),
     );
   }
 

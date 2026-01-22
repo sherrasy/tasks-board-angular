@@ -53,12 +53,12 @@ export class TodoFilters {
   protected hasActiveFilters = computed(() => {
     const current = this.todosStore.filters();
     const defaults = DEFAULT_TODO_FILTER;
-    return (Object.keys(current) as Array<keyof TTodoFilter>).some(
+    return (Object.keys(current) as (keyof TTodoFilter)[]).some(
       (key) => current[key] !== defaults[key],
     );
   });
 
-  protected onUpdateFilter(key: keyof TTodoFilter, value: any): void {
+  protected onUpdateFilter(key: keyof TTodoFilter, value: string | null): void {
     this.todosStore.patchFilters({ [key]: value });
   }
 

@@ -29,7 +29,7 @@ export class TodoBoard {
       [APP_ROUTES.BOARD],
       () => {
         this.todosStore.resetFilters();
-      }
+      },
     );
 
     effect(() => {

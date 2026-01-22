@@ -26,7 +26,7 @@ export class TodoDetails {
   private readonly todosStore = inject(TodosStore);
   private readonly authStore = inject(AuthStore);
   private readonly todoId = toSignal(
-    this.activatedRoute.paramMap.pipe(map((params) => params.get('id')))
+    this.activatedRoute.paramMap.pipe(map((params) => params.get('id'))),
   );
 
   protected currentTodo = computed(() => {

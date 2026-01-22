@@ -67,8 +67,11 @@ export const AuthStore = signalStore(
             return from(bcrypt.compare(pass.trim(), user.password.trim())).pipe(
               tap((isMatch) => {
                 if (isMatch) {
-                  const { password, ...userWithoutPass } = user;
-                  patchState(store, { currentUser: userWithoutPass, isLoading: false });
+                  const userWithoutPass = {};
+                  patchState(store, {
+                    currentUser: { id: user.id, name: user.name },
+                    isLoading: false,
+                  });
                   localStorage.setItem('currentUser', JSON.stringify(userWithoutPass));
                   router.navigate([APP_ROUTES.TASKS]);
                 } else {
