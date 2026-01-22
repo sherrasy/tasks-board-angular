@@ -25,7 +25,7 @@ export class ValidatorErrMessageService {
       case 'required':
         return this.translocoService.translate(keyPrefix + 'required', { fieldName });
 
-      case 'minlength':
+      case 'minlength': {
         const requiredMinLength = errors['minlength']?.requiredLength;
         if (requiredMinLength !== undefined) {
           return this.translocoService.translate(keyPrefix + 'minLength', {
@@ -34,8 +34,9 @@ export class ValidatorErrMessageService {
           });
         }
         break;
+      }
 
-      case 'maxlength':
+      case 'maxlength': {
         const requiredMaxLength = errors['maxlength']?.requiredLength;
         if (requiredMaxLength !== undefined) {
           return this.translocoService.translate(keyPrefix + 'maxLength', {
@@ -44,6 +45,7 @@ export class ValidatorErrMessageService {
           });
         }
         break;
+      }
 
       default:
         return this.translocoService.translate(keyPrefix + 'genericInvalid', { fieldName });

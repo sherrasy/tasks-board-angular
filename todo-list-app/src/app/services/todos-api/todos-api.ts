@@ -36,21 +36,21 @@ export class TodosApiService {
   public addNewTodo(newTodo: AddTodoDto): Observable<ITodoItem | null> {
     return this.http.post<ITodoItem>(this.baseUrl, { ...newTodo, status: TODO_STATUS.NEW }).pipe(
       tap(() => this.handleSuccess(TOAST_TEXT.ADD_TODO)),
-      catchError(this.handleError<ITodoItem | null>(TOAST_TEXT.ERROR_TODO, null))
+      catchError(this.handleError<ITodoItem | null>(TOAST_TEXT.ERROR_TODO, null)),
     );
   }
 
   public editTodo(todo: EditTodoDto): Observable<ITodoItem | null> {
     return this.http.put<ITodoItem>(`${this.baseUrl}/${todo.id}`, todo).pipe(
       tap(() => this.handleSuccess(TOAST_TEXT.UPDATE_TODO)),
-      catchError(this.handleError<ITodoItem | null>(TOAST_TEXT.ERROR_TODO, null))
+      catchError(this.handleError<ITodoItem | null>(TOAST_TEXT.ERROR_TODO, null)),
     );
   }
 
   public removeTodo(id: string): Observable<unknown | null> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`).pipe(
       tap(() => this.handleSuccess(TOAST_TEXT.DELETE_TODO)),
-      catchError(this.handleError<null>(TOAST_TEXT.ERROR_TODO, null))
+      catchError(this.handleError<null>(TOAST_TEXT.ERROR_TODO, null)),
     );
   }
 

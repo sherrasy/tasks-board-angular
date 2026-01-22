@@ -39,15 +39,15 @@ export class TodoListItem {
   public currentTodo = input.required<ITodoItem>();
 
   protected isSelected: Signal<boolean> = computed(
-    () => this.todosStore.selectedItemId() === this.currentTodo().id
+    () => this.todosStore.selectedItemId() === this.currentTodo().id,
   );
 
   protected isEditing: Signal<boolean> = computed(
-    () => this.todosStore.editingItemId() === this.currentTodo().id
+    () => this.todosStore.editingItemId() === this.currentTodo().id,
   );
 
   protected isCompleted: Signal<boolean> = computed(
-    () => this.currentTodo().status === TODO_STATUS.COMPLETED
+    () => this.currentTodo().status === TODO_STATUS.COMPLETED,
   );
 
   protected handleRemoveTodo(e: Event, id: string) {

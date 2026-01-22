@@ -6,7 +6,7 @@ import { AuthStore } from '../../store/auth-store';
 })
 export class HideForUnauthorized {
   private readonly authStore = inject(AuthStore);
-  private readonly templateRef = inject(TemplateRef<any>);
+  private readonly templateRef = inject(TemplateRef<unknown>);
   private readonly viewContainer = inject(ViewContainerRef);
 
   constructor() {

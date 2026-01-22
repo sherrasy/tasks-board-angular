@@ -14,12 +14,12 @@ export class RouteStateService {
     destroyRef: DestroyRef,
     onIdChange: (id: string | null) => void,
     cleanupRoutes: string[] = [],
-    onCleanup?: () => void
+    onCleanup?: () => void,
   ): void {
     this.activatedRoute.firstChild?.paramMap
       .pipe(
         takeUntilDestroyed(destroyRef),
-        map((params) => params.get('id'))
+        map((params) => params.get('id')),
       )
       .subscribe((id) => onIdChange(id));
 
