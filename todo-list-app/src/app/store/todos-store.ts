@@ -1,6 +1,6 @@
 import { computed, inject } from '@angular/core';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { catchError, switchMap, tap } from 'rxjs/operators';
+import { catchError, delay, switchMap, tap } from 'rxjs/operators';
 
 import {
   patchState,
@@ -11,13 +11,13 @@ import {
   withState,
 } from '@ngrx/signals';
 import { of, pipe } from 'rxjs';
+import { DEFAULT_TODO_FILTER, UNASSIGNED_VALUE } from '../components/todo-filters/consts';
 import { TodosApiService } from '../services/todos-api/todos-api';
 import { AddTodoDto, EditTodoDto } from '../shared/types/dto/todo.dto';
-import { ITodoItem, TTaskLabel } from '../shared/types/todo-item.interface';
 import { TTodoFilter } from '../shared/types/filters.interface';
-import { DEFAULT_TODO_FILTER, UNASSIGNED_VALUE } from '../components/todo-filters/consts';
-import { AuthStore } from './auth-store';
+import { ITodoItem, TTaskLabel } from '../shared/types/todo-item.interface';
 import { formatDuration } from '../shared/util/helpers';
+import { AuthStore } from './auth-store';
 
 interface TodosState {
   todos: ITodoItem[];
@@ -146,6 +146,7 @@ export const TodosStore = signalStore(
       loadTodos: rxMethod<void>(
         pipe(
           tap(() => patchState(store, { isLoading: true })),
+          delay(500),
           switchMap(() =>
             todosApiService.getAllTodos().pipe(
               tap((todos) => patchState(store, { todos, isLoading: false })),

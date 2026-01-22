@@ -24,7 +24,6 @@ export class Button {
   });
 
   public handleClick(event: Event) {
-    console.log(this.type(), this.action, this.buttonClass());
     if (this.isDisabled()) return;
     this.action.emit(event);
   }

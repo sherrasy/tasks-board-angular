@@ -1,5 +1,10 @@
 <div class="login-content">
-  <div class="login-container">
+  @if (authStore.isLoading()) {
+    <div class="login-container">
+    <app-loader/>
+  </div>
+  }
+  @else{<div class="login-container">
     <h2>{{ (isRegisterMode ? 'auth.registerTitle' : 'auth.loginTitle') | transloco }}</h2>
 
     @if (!isRegisterMode) {
@@ -92,5 +97,6 @@
       </div>
     </form>
     }
-  </div>
+  </div>}
+
 </div>
