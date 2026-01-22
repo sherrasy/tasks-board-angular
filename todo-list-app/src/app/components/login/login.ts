@@ -10,6 +10,7 @@ import { trimmedMinLength } from '../../shared/validators/trimmed-minlength.vali
 import { Button } from '../../shared/ui/button/button';
 import { AuthStore } from '../../store/auth-store';
 import { MatOption, MatSelectModule } from '@angular/material/select';
+import { Loader } from '../../shared/ui/loader/loader';
 // TODO: паттерн пароля вместо тестового 12345
 @Component({
   selector: 'app-login',
@@ -22,6 +23,7 @@ import { MatOption, MatSelectModule } from '@angular/material/select';
     Button,
     MatSelectModule,
     MatOption,
+    Loader,
   ],
   templateUrl: './login.html',
   styleUrl: './login.scss',

@@ -9,7 +9,7 @@ import {
   withState,
 } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { catchError, of, pipe, switchMap, tap, from } from 'rxjs';
+import { catchError, of, pipe, switchMap, tap, from, delay } from 'rxjs';
 import * as bcrypt from 'bcryptjs';
 
 import { UsersApiService } from '../services/users-api/users-api';
@@ -40,16 +40,17 @@ export const AuthStore = signalStore(
       loadUsers: rxMethod<void>(
         pipe(
           tap(() => patchState(store, { isLoading: true })),
+          delay(500),
           switchMap(() =>
             usersApi.getAllUsers().pipe(
               tap((users) => patchState(store, { users, isLoading: false })),
               catchError(() => {
                 patchState(store, { isLoading: false });
                 return of([]);
-              })
-            )
-          )
-        )
+              }),
+            ),
+          ),
+        ),
       ),
 
       login: rxMethod<{ userId: string; pass: string }>(
@@ -78,10 +79,10 @@ export const AuthStore = signalStore(
                 console.error('Bcrypt error:', err);
                 patchState(store, { isLoading: false });
                 return of(null);
-              })
+              }),
             );
-          })
-        )
+          }),
+        ),
       ),
 
       register: rxMethod<{ name: string; pass: string }>(
@@ -90,7 +91,7 @@ export const AuthStore = signalStore(
           switchMap(({ name, pass }) =>
             from(bcrypt.hash(pass, 10)).pipe(
               switchMap((hashedPassword) =>
-                usersApi.createUser({ id: crypto.randomUUID(), name, password: hashedPassword })
+                usersApi.createUser({ id: crypto.randomUUID(), name, password: hashedPassword }),
               ),
               tap((savedUser) => {
                 if (savedUser) {
@@ -101,10 +102,10 @@ export const AuthStore = signalStore(
                 } else {
                   patchState(store, { isLoading: false });
                 }
-              })
-            )
-          )
-        )
+              }),
+            ),
+          ),
+        ),
       ),
 
       logout: () => {
@@ -123,5 +124,5 @@ export const AuthStore = signalStore(
     onInit(store) {
       store.loadUsers();
     },
-  })
+  }),
 );
